@@ -25,10 +25,10 @@ For a desired doublet percentage, we generated an initial number of doublets bas
 .. math::
    :nowrap:
 
-   \begin{align*}
-   \text{number of doublets} &= (\text{doublet percentage}) \times (\text{number of cells}) \\
-   \text{such that} \quad (\text{number of cells}) &= (\text{number of initial singlets}) - (\text{number of doublets})
-   \end{align*}
+\begin{align*}
+\text{number of doublets} &= (\text{doublet percentage}) \times (\text{number of cells}) \\
+\text{such that} \quad (\text{number of cells}) &= (\text{number of initial singlets}) - (\text{number of doublets})
+\end{align*}
 
  
   We generated the number of doublets determined by this formula. Next, we removed the singlet cells used to create doublets and corrected for generating doublets from singlets with replacement to ensure the desired doublet percentage.
