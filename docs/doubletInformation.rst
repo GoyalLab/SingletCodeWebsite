@@ -23,6 +23,9 @@ Doublets can form from cells belonging to vastly different cell types or species
 Downstream impact of doublets
 ===============================
 The presence of doublets can impact downstream functional analysis used to interpret the scRNA-seq datasets. Using the datasets we simulated with varying doublet percentages (:doc: `read more about doublet simulation and the dataset here<>`), we assessed the impact on commonly implemented downstream analysis.
+
+SCHEMATIC: 5
+
 .. line-block::
     **Clustering stability**
     Clustering is one of the most common analysis done to infer the identity of similar cells. When the number of doublets were increased, the probability of the correct number of cell clusters decreased. This might lead to spurious clusters or a genuine sub-type of cells not being identified as a distinct group. 
