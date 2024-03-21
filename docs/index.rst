@@ -6,17 +6,19 @@
 Welcome to the documentation of Singlet Code!
 ===================================================
 
-Singlet code `(link) <https://www.biorxiv.org/content/10.1101/2023.08.04.552078v2>`_ uses cell barcoding technology to identify **real singlets** in scRNAseq data, benchmarks existing doublet detection methods and provides a *classifier* to detect singlets in *unbarcoded* datasets as well of the same cell type.
+Singlet code `(link to paper) <https://www.biorxiv.org/content/10.1101/2023.08.04.552078v2>`_ uses cell barcoding technology to identify **real singlets** in scRNAseq data, benchmarks existing doublet detection methods and provides a *classifier* to detect singlets in *unbarcoded* datasets as well of the same cell type.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    
-   mainIntro
+   doubletInformation
+   singletCode
    classifier
+   usageInformation
    doubletDetectionMethods
    datasetsInfo
-   references
    FAQs
+   references
    Link to Paper <https://www.biorxiv.org/content/10.1101/2023.08.04.552078v2>
    Lab Website <https://www.goyallab.org/>
    Github repository <https://github.com/madelinemelzer/singletCode>
