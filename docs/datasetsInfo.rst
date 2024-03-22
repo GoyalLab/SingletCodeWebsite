@@ -12,7 +12,15 @@ Datset Information
 
 Cell Type Diversity
 -------------------------------
-[SCHEMATIC Fig 1D]
+.. image:: /images/cellTypeAnnotation-1.png
+   :scale: 50 %
+   :alt: Summary of cell type and tissue type in all datasets
+   :caption: A summary of cell type and tissue type in all datasets
+
+.. image:: /images/SupplementaryFigure1.svg
+   :scale: 50 %
+   :alt: Schematic of how cell type annotation was done and UMAP representations of cell type in some representative samples
+   :caption: Schematic of how cell type annotation was done and UMAP representations of cell type in some representative samples
 
 .. contents:: Contents:
    :local:

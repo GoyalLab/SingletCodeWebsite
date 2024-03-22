@@ -11,11 +11,10 @@ How doublets form?
 
 Single-cell RNA sequencing (scRNA-seq) datasets comprise true single cells, or singlets, in addition to cells that coalesce during the protocol, or doublets. 
 
-SCHEMATIC: 1A
-
 .. image:: /images/doubletInfo-1.png
    :scale: 50 %
    :alt: How doublets are generated during sequencing
+   :caption: How doublets are created while sequencing
 
 scRNA-seq technologies rely on distributing individual cells from a suspension into individual reactions, each labeled with a unique “ID”, usually in the form of a reaction-specific sequence barcode. Despite numerous technological optimizations, multiple cells can occasionally be encapsulated in a single reaction, resulting in doublets or multiplets where two or more cells are assigned the same reaction ID. In some cases, beyond the random chance of two cells encapsulated in a single reaction, cellular physiology and the nature of experimental assays can promote cells to clump, leading to an enhanced doublet fraction.[REF 1, 2] The percentage of doublets in a given experiment depends on several factors, including the features of the sample and throughput, and can be as high as 40-50% [REF 3,4]
 
@@ -28,11 +27,10 @@ Downstream impact of doublets
 ===============================
 The presence of doublets can impact downstream functional analysis used to interpret the scRNA-seq datasets. Using the datasets we simulated with varying doublet percentages (:doc: `read more about doublet simulation and the dataset here<>`), we assessed the impact on commonly implemented downstream analysis.
 
-SCHEMATIC: 5
-
-.. image:: /images/Figure5.pdf
+.. image:: /images/Figure5.svg
    :scale: 50 %
-   :alt: Functional Analysis to asses impacts of doublets in datasets
+   :alt: Functional Analysis to assess the impacts of doublets in datasets
+   :caption: Functional Analysis to assess the impacts of doublets in datasets
 
 .. line-block::
     **Clustering stability**
