@@ -20,10 +20,7 @@ Simulation Datasets
 ---------------------------------------
 To simulate the doublets, we randomly selected the gene expression counts data from two cells we identify as true singlets. We averaged or summed the counts from these two cells to generate simulated doublets.  
 
-For a desired doublet percentage, we generated an initial number of doublets based on the initial assumption that doublets are generated from singlets without replacement such that, for each doublet generated, the total number of cells will decrease by 1. Then, it follows that:
-
-.. math::
-   :nowrap:
+For a desired doublet percentage, we generated an initial number of doublets based on the initial assumption that doublets are generated from singlets without replacement such that, for each doublet generated, the total number of cells will decrease by 1. Then, it follows that: :math: `number of doublets = (doublet percentage)*(number of initial singlets - number of doublets)`.
 
 \text{number of doublets} &= (\text{doublet percentage}) \times (\text{number of cells}) \\
 \text{such that} \quad (\text{number of cells}) &= (\text{number of initial singlets}) - (\text{number of doublets})
