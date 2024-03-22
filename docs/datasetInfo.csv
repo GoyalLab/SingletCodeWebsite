@@ -8,15 +8,13 @@ Goyal et al 3., Melanoma patient resistant cell line, Homo sapiens, Skin-derived
 Goyal et al 4., Breast cancer patient resistant cell line	, Homo sapiens, Breast; mammary gland, MDA-MB-231-D4, BRAF – G464V, KRAS – G13D, TERT – c.1-124C>T, TP53 – R280K", "Chemotherapy, cytotoxic", 2, 13220, 10136, "Goyal et al., Nature, 2023"
 
 Goyal et al 5., Melanoma patient resistant cell line, Homo sapiens, Skin-derived, WM989 A6-G3, BRAF – V600E, Targeted therapy, 2, 33655, 26268, "Goyal et al., Nature, 2023"
-
 Goyal et al 6., Melanoma patient untreated cell line, Homo sapiens, Skin-derived, WM989 A6-G3, BRAF – V600E, No treatment, 2, 15509, 13032, "Goyal et al., Nature, 2023"
 Goyal et al 8., Primary melanocytes, Homo sapiens, Skin-derived, FOM230-1, WT, No treatment, 3, 5074, 4851, "Goyal et al., Nature, 2023"
-
 Jiang et al., HIPS differentiation, Homo sapiens, PBMCs, PENN123i-SV20, WT, Cardiac differentiation signal, 2, 5558, 3453, "Jiang et al., Genome Biol, 2022"
 Jain et al., Stem cell reprogramming, Homo sapiens, Fibroblasts, hiF-T, WT, OKSM, 6, 3901, 3610, "Jain et al., Cell Systems, 2024"
 TREX, neuroepithelial progenitor cells differentiation, Mus musculus, Neural, CD-1, -, No treatment, 4, , , "Ratz et al., Nature neuroscience, 2022"
 LK, pan-myeloid differentiation, Mus musculus, Blood, Lin-Kit+, -, cytokines and growth factors, 7, , , "Weinreb et al., Science, 2020"
-LARRY, pan-myeloid differentiation, Mus musculus, Blood, Lin-Kit+, -, cytokines and growth factors, 13, , , "Weinreb et al., Science, 2020"
+LARRY, pan-myeloid differentiation, Mus musculus,Blood,Lin-Kit+,-,cytokines and growth factors, 13, , , "Weinreb et al., Science, 2020"
 LSK, pan-myeloid differentiation, Mus musculus, Blood, Lin-Kit+Sca-1+, -, cytokines and growth factors, 15, , , "Weinreb et al., Science, 2020"
 SPLINTR_chemo, Acute myeloid leukaemia, Mus musculus, Bone marrow, C57BL/6, MLL-AF9 + KrasG12D, chemotherapy, 10, , , "Fennell et al., Nature, 2022"
 SPLINTR_chemoretrans, Acute myeloid leukaemia, Mus musculus, Bone marrow and spleen, C57BL/6, MLL-AF9 + KrasG12D, No treatment, 1, , , "Fennell et al., Nature, 2022"

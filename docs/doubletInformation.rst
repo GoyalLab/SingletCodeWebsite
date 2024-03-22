@@ -12,7 +12,7 @@ How doublets form?
 Single-cell RNA sequencing (scRNA-seq) datasets comprise true single cells, or singlets, in addition to cells that coalesce during the protocol, or doublets. 
 
 SCHEMATIC: 1A
-.. image:: images/doubletInfo-1.png
+.. image:: /images/doubletInfo-1.png
    :scale: 50 %
    :alt: How doublets are generated during sequencing
    :loading: embed
