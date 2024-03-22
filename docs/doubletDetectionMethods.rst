@@ -2,14 +2,15 @@
 Benchmarking Doublet detection Methods
 =============================
 
-Using the dataset we created using the results from Singlet code as described in :ref:`singletCode`, we benchmark four doublet detection methods - scDblFinder (`link <https://bioconductor.org/packages/release/bioc/html/scDblFinder.html>`), DoubletFinder (`link <https://github.com/chris-mcginnis-ucsf/DoubletFinder>`), Scrublet (`link <https://github.com/AllonKleinLab/scrublet/>`) and Hybrid (`link <https://github.com/kostkalab/scds>`). 
+Using the dataset we created using the results from Singlet code as described in :ref:`singletCode`, we benchmark four doublet detection methods - scDblFinder (`link <https://bioconductor.org/packages/release/bioc/html/scDblFinder.html>`_), DoubletFinder (`link <https://github.com/chris-mcginnis-ucsf/DoubletFinder>`_), Scrublet (`link <https://github.com/AllonKleinLab/scrublet/>`_) and Hybrid (`link <https://github.com/kostkalab/scds>`_). 
 
 We evaluated the AUPRC, AUROC, TNR, and doublet scores and calls of the four methods on each of the barcoded datasets with doublets formed by averaging ground-truth singlets. 
 
-.. image:: /images/Figure3.svg
+.. figure:: /images/Figure3.svg
    :scale: 50 %
    :alt: Benchmark results of doublet detection methods
-   :caption: Benchmark results of doublet detection methods
+   
+   Benchmark results of doublet detection methods
 
 Since doublet methodologies yielded different doublet detection performances, we also analysed the data to see if the different methods exhibit any pair-wise patterns of doublet labeling. To do this, we devised a new metric called similarity score, which calculates the fraction of doublets in a sample on which two methods make the same call. Across all datasets and doublet detection methods, the average similarity score was 0.66, suggesting some degree of inconsistency of doublet labeling.
 
