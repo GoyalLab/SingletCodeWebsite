@@ -1,11 +1,18 @@
 ===============================
 Datasets used in Singlet Code
 ===============================
-This section will contain all the information about the different datasets in different tabs: the big table containin gall the information about the datasets, maybe one tab with cell types in the datasets
+Our proof-of-concept analysis using singletCode was implemented on 94 barcoded scRNA-seq datasets, covering 449,186 total cells across several cell types and experimental designs.
 
-.. toctree::
+Datset Information
+-----------------------------
+.. csv-table:: Datasets
+    :file: datasetInfo.csv
+    :header-rows: 1
+    :class: longtable
 
-   DatasetsUsed/data
+Cell Type Diversity
+-------------------------------
+[SCHEMATIC Fig 1D]
 
 .. contents:: Contents:
    :local:
