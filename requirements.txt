@@ -5,7 +5,7 @@ nbsphinx
 sphinx-lesson
 sphinx_rtd_size
 numpy
-scipy
-pandas 
-tqdm
-mathplotlib 
+scipy >= 1.1.0
+pandas >= 0.23.4
+tqdm >= 4.28.1
+matplotlib >= 3.0.2
