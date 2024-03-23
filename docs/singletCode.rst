@@ -20,6 +20,8 @@ A cell which meets any of these conditions is inferred to be a true singlet:
    
    Schematic to show how doublets are identified by singletCode
 
+.. _simulationInfo:
+
 Simulation Datasets 
 ---------------------------------------
 To simulate the doublets, we randomly selected the gene expression counts data from two cells we identify as true singlets. We averaged or summed the counts from these two cells to generate simulated doublets.  

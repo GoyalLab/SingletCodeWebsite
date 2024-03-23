@@ -9,6 +9,10 @@
 
 import sphinx_rtd_theme
 import os, sys
+from sphinx.writers.html5 import HTML5Translator
+from docutils import nodes
+from docutils.nodes import Element
+
 sys.path.insert(0, os.path.abspath('..'))
 
 # We require sphinx >=2 because of sphinxcontrib.bibtex,
@@ -17,7 +21,7 @@ needs_sphinx = '2.0'
 # -- Project information -----------------------------------------------------
 # General information about the project.
 Affiliation = u'Goyal Lab'
-project = u'SingletCode'
+project = u'singletCode'
 copyright = u'2023, ' + Affiliation
 
 # The full version, including alpha/beta/rc tags
@@ -88,6 +92,38 @@ if not on_rtd:  # only import and set the theme if we're building docs locally
 bibtex_bibfiles = [
     './bibtex/ref.bib',
     ]
+
+class PatchedHTML5Translator(HTML5Translator):
+
+    def visit_reference(self, node: Element) -> None:
+        atts = {'class': 'reference external'}
+        if node.get('internal') or 'refuri' not in node:
+            atts['class'] = 'reference internal'
+        else:
+            # Customize behavior for external links
+            atts['target'] = '_blank'
+            atts['rel'] = 'noopener noreferrer'
+
+        if 'refuri' in node:
+            atts['href'] = node['refuri'] or '#'
+            if self.settings.cloak_email_addresses and atts['href'].startswith('mailto:'):
+                atts['href'] = self.cloak_mailto(atts['href'])
+                self.in_mailto = True
+        else:
+            assert 'refid' in node, 'References must have "refuri" or "refid" attribute.'
+            atts['href'] = '#' + node['refid']
+
+        if 'reftitle' in node:
+            atts['title'] = node['reftitle']
+
+        if 'target' in node and 'target' not in atts:
+            atts['target'] = node['target']
+
+        self.body.append(self.starttag(node, 'a', '', **atts))
+        HTML5Translator.visit_reference(self, node)
+def setup(app):
+    app.set_translator('html', PatchedHTML5Translator)
+    app.add_js_file(None, body="document.addEventListener('DOMContentLoaded', function() {document.querySelectorAll('a.reference.external').forEach(function(a) {a.setAttribute('target', '_blank'); a.setAttribute('rel', 'noopener noreferrer');});});", type="text/javascript")
 
 # -- Options for HTML output -------------------------------------------------
 
