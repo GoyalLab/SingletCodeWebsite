@@ -17,7 +17,7 @@ Singlet code `(link to paper) <https://www.biorxiv.org/content/10.1101/2023.08.0
    usageInformation
    doubletDetectionMethods
    datasetsInfo
-   get_singlets
+   packageDocumentation
    FAQs
    references
    Link to Paper <https://www.biorxiv.org/content/10.1101/2023.08.04.552078v2>
