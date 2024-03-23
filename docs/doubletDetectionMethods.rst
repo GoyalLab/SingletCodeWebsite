@@ -6,8 +6,8 @@ Using the dataset we created using the results from Singlet code as described in
 
 We evaluated the AUPRC, AUROC, TNR, and doublet scores and calls of the four methods on each of the barcoded datasets with doublets formed by averaging ground-truth singlets. 
 
-.. figure:: /images/Figure3.svg
-   :scale: 50 %
+.. figure:: /images/Figure3.png
+   :scale: 100 %
    :alt: Benchmark results of doublet detection methods
    
    Benchmark results of doublet detection methods

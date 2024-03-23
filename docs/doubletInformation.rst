@@ -28,8 +28,8 @@ Downstream impact of doublets
 ===============================
 The presence of doublets can impact downstream functional analysis used to interpret the scRNA-seq datasets. Using the datasets we simulated with varying doublet percentages (:doc: `read more about doublet simulation and the dataset here<>`), we assessed the impact on commonly implemented downstream analysis.
 
-.. figure:: /images/Figure5.svg
-   :scale: 50 %
+.. figure:: /images/Figure5.png
+   :scale: 100 %
    :alt: Functional Analysis to assess the impacts of doublets in datasets
    
    Functional Analysis to assess the impacts of doublets in datasets

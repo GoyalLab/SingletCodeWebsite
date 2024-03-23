@@ -18,7 +18,7 @@ Cell Type Diversity
    
    A summary of cell type and tissue type in all datasets
 
-.. figure:: /images/SupplementaryFigure1.svg
+.. figure:: /images/SupplementaryFigure1.png
    :scale: 50 %
    :alt: Schematic of how cell type annotation was done and UMAP representations of cell type in some representative samples
    
