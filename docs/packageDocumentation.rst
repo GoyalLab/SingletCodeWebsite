@@ -10,7 +10,7 @@ Installation
 
     pip3 install singletCode
 
-.. currentmodule:: .packageScript.singletCode.singletCode
+.. currentmodule:: packageScript.singletCode.singletCode
 
 get_singlets
 ------------
