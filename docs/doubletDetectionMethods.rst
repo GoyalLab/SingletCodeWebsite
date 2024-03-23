@@ -1,8 +1,8 @@
-=============================
+==========================================
 Benchmarking Doublet detection Methods
-=============================
+==========================================
 
-Using the dataset we created using the results from Singlet code as described in :ref:`simulationInfo`, we benchmark four doublet detection methods - scDblFinder (`link <https://bioconductor.org/packages/release/bioc/html/scDblFinder.html>`_), DoubletFinder (`link <https://github.com/chris-mcginnis-ucsf/DoubletFinder>`_), Scrublet (`link <https://github.com/AllonKleinLab/scrublet/>`_) and Hybrid (`link <https://github.com/kostkalab/scds>`_). 
+Using the dataset we created using the results from Singlet code as described in :ref:`simulationInfo`, we benchmark four doublet detection methods -  `scDblFinder <https://bioconductor.org/packages/release/bioc/html/scDblFinder.html>`_, DoubletFinder `DoubletFinder <https://github.com/chris-mcginnis-ucsf/DoubletFinder>`_, `Scrublet <https://github.com/AllonKleinLab/scrublet/>`_ and `Hybrid <https://github.com/kostkalab/scds>`_. 
 
 We evaluated the AUPRC, AUROC, TNR, and doublet scores and calls of the four methods on each of the barcoded datasets with doublets formed by averaging ground-truth singlets. 
 
