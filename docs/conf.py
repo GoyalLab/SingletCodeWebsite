@@ -40,6 +40,10 @@ extensions = [
     'sphinx.ext.mathjax',
     'sphinx.ext.viewcode',
     'sphinx_rtd_size',
+    'sphinx.ext.autodoc',
+    'sphinx.ext.napoleon',
+    'sphinx.ext.todo',
+    'sphinx.ext.viewcode',
 ]
 sphinx_rtd_size_width = "90%"
 
@@ -48,7 +52,7 @@ bibtex_bibfiles = [
 ]
 
 todo_include_todos=True
-
+add_module_names = False
 
 # The suffix of source filenames.
 source_suffix = '.rst'

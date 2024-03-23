@@ -17,11 +17,12 @@ Singlet code `(link to paper) <https://www.biorxiv.org/content/10.1101/2023.08.0
    usageInformation
    doubletDetectionMethods
    datasetsInfo
+   get_singlets
    FAQs
    references
    Link to Paper <https://www.biorxiv.org/content/10.1101/2023.08.04.552078v2>
    Lab Website <https://www.goyallab.org/>
-   Github repository <https://github.com/madelinemelzer/singletCode>
+   Github repository <https://github.com/GoyalLab/fatemap_multiplet_public>
 
 
       
