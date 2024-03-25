@@ -1,3 +1,3 @@
-SingletCodeWebsite
+SingletCode
 ================================
-This is the repository to host the website on GitHub for the **SingletCode** paper.
+This is the repository to host the website on GitHub for the **singletCode** paper, singletCode package on PyPI and the documentation for the package. 
