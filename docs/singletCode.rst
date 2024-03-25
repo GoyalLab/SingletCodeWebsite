@@ -1,5 +1,5 @@
 ===================
-Singlet Code
+singletCode
 ===================
 
 singletCode is a framework  to extract true singlets from datasets utilizing several barcoding technologies(read more about the barcode technologies we used singletCode with here). 
