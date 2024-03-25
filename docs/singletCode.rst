@@ -14,7 +14,7 @@ A cell which meets any of these conditions is inferred to be a true singlet:
    #. multiple barcodes is present in the cell, but the same barcode combination is found in other cells in the same sample 
    #. multiple barcodes is present in the cell cell, but the same barcode combination is found in other cells across samples within the same experimental design (common for barcoding studies)
 
-.. figure:: /images/singletCode-1.png
+.. figure:: /images/madelineTest.png
    :scale: 50 %
    :alt: Schematic to show how doublets are identified by singletCode
    
