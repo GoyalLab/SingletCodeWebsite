@@ -6,18 +6,18 @@ Doublets in Sequencing
    :local:
    :depth: 2
 
-How doublets form?
+How do doublets form?
 ====================
 
-Single-cell RNA sequencing (scRNA-seq) datasets comprise true single cells, or singlets, in addition to cells that coalesce during the protocol, or doublets. 
+Single-cell RNA sequencing (scRNA-seq) datasets contain true single cells, or singlets, in addition to cells that randomly coalesce during the protocol, or doublets. Sometimes, there are higher rates of doublets which can be attributed to cellular physiology and experimental protocols can lead to cell clumping. Doublet percentage in a sample be as high as 40-50% [REF 3,4]. Doublets can be two very transcriptionally different cells captured together (heterotypic) or two transcriptionally similar cells captured together (homotypic). Doublets are difficult to identify because just because two cells are captured together does not mean there is simply more absolute RNA fragments present or sequenced in doublet cases, and cells exist on a transcriptional continuum, making identification of valid singlet cells difficult, especially if cells are in a transitioning or reprogrammed state.
 
-.. figure:: /images/doubletInfo-1.png
+
+.. figure:: images/Figure1A.png
    :scale: 50 %
    :alt: How doublets are generated during sequencing
    
-   How doublets are created while sequencing
-
-scRNA-seq technologies rely on distributing individual cells from a suspension into individual reactions, each labeled with a unique “ID”, usually in the form of a reaction-specific sequence barcode. Despite numerous technological optimizations, multiple cells can occasionally be encapsulated in a single reaction, resulting in doublets or multiplets where two or more cells are assigned the same reaction ID. In some cases, beyond the random chance of two cells encapsulated in a single reaction, cellular physiology and the nature of experimental assays can promote cells to clump, leading to an enhanced doublet fraction.[REF 1, 2] The percentage of doublets in a given experiment depends on several factors, including the features of the sample and throughput, and can be as high as 40-50% [REF 3,4]
+   
+   *How doublets are generated during sequencing*
 
 Doublet diversity
 ---------------------------------
@@ -26,27 +26,34 @@ Doublets can form from cells belonging to vastly different cell types or species
 
 Downstream impact of doublets
 ===============================
-The presence of doublets can impact downstream functional analysis used to interpret the scRNA-seq datasets. Using the datasets we simulated with varying doublet percentages (:doc: `read more about doublet simulation and the dataset here<>`), we assessed the impact on commonly implemented downstream analysis.
+Doublets are problematic because they can impact the conclusions of scRNA-seq downstream functional analyses. We found that doublets confound downstream analyses when we tested common downstream scRNA-seq data analysis protocols (differential expression, cell trajectory, clustering stability, and cell-cell communication) on datasets of various doublet percentages. A schematic for how these datasets were generated and examples of our results for differential expression are below.
 
-.. figure:: /images/Figure5.png
+.. figure:: /images/Figure5A.png
    :scale: 100 %
-   :alt: Functional Analysis to assess the impacts of doublets in datasets
-   
-   Functional Analysis to assess the impacts of doublets in datasets
+   :alt: Schematic of datasets generated for all functional analyses. The dataset is first processed to have 40% doublets and undergo standard Seurat processing with Leiden clustering, where cluster labels here are represented in different colors in UMAP space (second box, left), and doublet labels are represented by different shades of blue in UMAP space (second box, right). Then,doublets are removed to achieve 20%, 10% and 0% doublet datasets. The 0%, 10%, 20% and 40% doublet rate datasets are generated for each dataset used in benchmarking except for Smart-seq3 to evaluate doublet impact on various downstream analyses: cell trajectory, cell-cell communication, clustering stability, and differential expression.
+
+   *Schematic of datasets generated for all functional analyses. The dataset is first processed to have 40% doublets and undergo standard Seurat processing with Leiden clustering, where cluster labels here are represented in different colors in UMAP space (second box, left), and doublet labels are represented by different shades of blue in UMAP space (second box, right). Then,doublets are removed to achieve 20%, 10% and 0% doublet datasets. The 0%, 10%, 20% and 40% doublet rate datasets are generated for each dataset used in benchmarking except for Smart-seq3 to evaluate doublet impact on various downstream analyses: cell trajectory, cell-cell communication, clustering stability, and differential expression.*
+
 
 .. line-block::
     **Clustering stability**
-    Clustering is one of the most common analysis done to infer the identity of similar cells. When the number of doublets were increased, the probability of the correct number of cell clusters decreased. This might lead to spurious clusters or a genuine sub-type of cells not being identified as a distinct group. 
+    Clustering is one of the most common analyses done to infer the identity of similar cells. When the number of doublets were increased, the probability of getting the correct number of cell clusters decreased. This might lead to spurious clusters or a genuine sub-type of cells not being identified as a distinct group. For details about our results, see our paper.
 
     **Differential expression**
-    Differential expression is used to identify the genes that are differentially expression between cells belonging to different conditions. The genes identified could be used to explain the phenotype observed or examine pathways involved. 
-    Increasing doublet rate decreases the precision, recall, and true negative rate (TNR) for the datasets when compared to the differentially expressed genes inferred from the clean singlets-only dataset, with a higher doublet rate leading to worse performance. 
+    Differential expression is used to identify the genes that are differentially expressed between cells belonging to different conditions. The genes identified could be used to explain the phenotype observed or examine pathways involved. Our results indicated that increasing doublet rate decreases the precision, recall, and true negative rate (TNR) for the datasets when compared to the differentially expressed genes inferred from the clean singlets-only dataset, with a higher doublet rate leading to worse performance.
 
-    **Cell-cell communication inference**
-    Cell-cell communication inference can provide information about intercellular communication networks present in the sample sequenced. This can be used to understand the role of cell-cell interactions in biological processes. [REF CellChat]. Increasing the doublet rate decreases the precision and recall for communication pathways identified when compared to the clean singlets only datasets. 
+    .. figure:: /images/Figure5B.png
+   :scale: 100 %
+   :alt: Differential expression analysis results for all datasets using MAST (purple, left) and Wilcox (blue, right) on two randomly chosen clusters at various doublet rates. Line color shade represents the % doublet rate, with a more saturated color indicative of a higher doublet rate. Precision, recall and TNR are calculated against ground truth differentially expressed genes in the corresponding dataset without doublets. P-values between variable doublet rate datasets are calculated with a paired Wilcoxon signed-rank test.
 
-    **Cell Trajectory**
-    Increasing doublet rate caused the trajectory to deviate away from the trajectory inferred from the clean singlet-only datasets and there were gain/loss of lineages when doublets were introduced. 
+   *Differential expression analysis results for all datasets using MAST (purple, left) and Wilcox (blue, right) on two randomly chosen clusters at various doublet rates. Line color shade represents the % doublet rate, with a more saturated color indicative of a higher doublet rate. Precision, recall and TNR are calculated against ground truth differentially expressed genes in the corresponding dataset without doublets. P-values between variable doublet rate datasets are calculated with a paired Wilcoxon signed-rank test.*
+
+
+   **Cell-cell communication inference**
+   Cell-cell communication inference can provide information about intercellular communication networks. This can be used to understand the role of cell-cell interactions in biological processes. [REF CellChat]. Increasing the doublet rate decreases the precision and recall for communication pathways identified when compared to the clean singlets only datasets. For details about our results, see our paper.
+
+   **Cell Trajectory**
+   Increasing doublet rate caused the trajectory to deviate away from the trajectory inferred from the clean singlet-only datasets and there were gain/loss of lineages when doublets were introduced. For details about our results, see our paper.
 
 
 

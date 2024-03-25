@@ -3,20 +3,48 @@ Classifier
 =================
 
 
-Working of the classifier
+How was it built?
 ----------------------------------
-We used the true singlets identified with singletCode to train a deep learning model to identify doublets. It is an extreme gradient-boosting (XGBoost) classifier on samples with 10% simulated doublets. Gradient boosting uses a series of decision trees to minimize the residuals of the prediction made by the previous tree. We chose XGBoost because of its out-of-the-box performance on tabular data, speed, and extensive documentation. To achieve peak performance, we used Bayesian optimization through the hyperopt library to tune the hyperparameters of our model. We split the classification datasets such that 60% of a dataset was used for training at both the parameter optimization and final training steps, and 20% each was used for validation during the optimization stage and testing during the final evaluation stage. Despite the high class imbalance (singlets:doublets = 9:1), the average AUPRC and AUROC values of the classifier were 0.98*** and 0.99***, respectively, for testing datasets across all the technologies.
+We used the true singlets identified with singletCode to simulate datasets with 10% doublets and trained an extreme gradient-boosting (XGBoost) classifier to detect these doublets. 
 
-.. figure:: /images/Figure6.png
+The classifier is built in two steps:
+
+   #. Hyperparameter optimization (using hyperopt()) with a training and validation set.
+   #. Training the optimal model with a training and test set
+
+
+.. figure:: /images/Figure6A.png
    :scale: 100 %
-   :alt: Schematic to show how the classifier works and benchmarking results
+   :alt:  Schematic of classifier optimization and training. Data was first split into training, validation, and testing sets. The training and validation sets were used to optimize the hyperparameters using the hyperopt library. A search space (blue cube) was defined in high dimensional hyperparameter space and, through Bayesian optimization, the optimal value for each hyperparameter was determined based on maximizing the AUPRC value. Once the model’s parameters were optimized, the final, optimal, classifier was trained using the training and test sets. An extreme gradient boosted (XGBoost) classifier was trained to recognize doublet cells with input data being gene count matrices of datasets made from singlets and 10% simulated doublets. 
+
    
-   Schematic to show how the classifier works and benchmarking results
+   *Schematic of classifier optimization and training. Data was first split into training, validation, and testing sets. The training and validation sets were used to optimize the hyperparameters using the hyperopt library. A search space (blue cube) was defined in high dimensional hyperparameter space and, through Bayesian optimization, the optimal value for each hyperparameter was determined based on maximizing the AUPRC value. Once the model’s parameters were optimized, the final, optimal, classifier was trained using the training and test sets. An extreme gradient boosted (XGBoost) classifier was trained to recognize doublet cells with input data being gene count matrices of datasets made from singlets and 10% simulated doublets.*
 
-Extending Classifier
+How well does it perform?
 ---------------------------------
-To extend the utility of the classifier beyond the same dataset, we trained on sample A from Goyal et al. 1 and implemented it to identify singlets in sample B, an independently-performed experiment on the same cell type (melanoma). Similarly, we trained the classifier on sample B and used it to identify doublets in sample A. The performance was compared to other doublet detection methods and the classifier works significantly better. This highlights the practical impact of our approach on singlet detection from non-barcoded datasets.
 
+We achieved significantly higher AUPRC and AUROC scores using our classifier compared to the other methods we benchmarked for doublet detection. 
+
+.. figure:: /images/Figure6B.png
+   :scale: 100 %
+   :alt: Results of classifier doublet detection compared to other doublet detection methods as measured by AUPRC. Each dot represents the average AUPRC score of a doublet detection method (color) on a given dataset (x-axis). The ribbon has the width of the standard deviation of the AUPRC score for each doublet detection method.
+
+   *Results of classifier doublet detection compared to other doublet detection methods as measured by AUPRC. Each dot represents the average AUPRC score of a doublet detection method (color) on a given dataset (x-axis). The ribbon has the width of the standard deviation of the AUPRC score for each doublet detection method.*
+
+.. _classifier-Nonebarcoded:
+
+Classifying doublets in non-barcoded datasets 
+------------------------------------------------
+
+Although barcoding experiments are becoming increasingly prevalent, they are still relatively uncommon. Therefore, we sought to train a doublet classifier on barcoded data that could detect doublets in non-barcoded data. We trained a classifier on a melanoma cell sample using true singlet labels from singletCode and successfully identified doublets in a similar cell sample without needing barcoding data. 
+
+.. figure:: /images/Figure6G.png
+   :scale: 100 %
+   :alt: Schematic of training a doublet classifier on barcoded data from 1 experiment and using that classifier to identify doublets in a biological replicate, experiment 2.
+
+   *Schematic of training a doublet classifier on barcoded data from 1 experiment and using that classifier to identify doublets in a biological replicate, experiment 2.*
+
+As barcoded scRNA-seq data becomes more abundant, experimenters can train a classifier specific to their cell type using a barcoded subset of data, and, eventually, there could be enough data to train a classifier on multiple barcoded cell types which can be used more generally.
 
 .. contents:: Contents:
    :local:

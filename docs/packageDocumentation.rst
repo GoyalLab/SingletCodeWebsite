@@ -6,6 +6,8 @@ Availablility
 -----------------
 The package is available on PyPI as `singletCode <https://pypi.org/project/singletCode/1.0.0/>_`. 
 
+.. _package-info:
+
 How to use it?
 ------------------
 

@@ -1,25 +1,65 @@
 ==========================================
-Benchmarking Doublet detection Methods
+Benchmarking Doublet Detection Methods
 ==========================================
 
-Using the dataset we created using the results from Singlet code as described in :ref:`simulationInfo`, we benchmark four doublet detection methods -  `scDblFinder <https://bioconductor.org/packages/release/bioc/html/scDblFinder.html>`_, DoubletFinder `DoubletFinder <https://github.com/chris-mcginnis-ucsf/DoubletFinder>`_, `Scrublet <https://github.com/AllonKleinLab/scrublet/>`_ and `Hybrid <https://github.com/kostkalab/scds>`_. 
+Simulation datasets
+------------------------
 
-We evaluated the AUPRC, AUROC, TNR, and doublet scores and calls of the four methods on each of the barcoded datasets with doublets formed by averaging ground-truth singlets. 
+To simulate doublets for benchmarking, we randomly selected the gene expression counts data from two cells that were found to be true singlets by singletCode. We averaged the counts from these two cells to generate simulated doublets and create datasets with various doublet percentages for benchmarking.
 
-.. figure:: /images/Figure3.png
+.. figure:: /images/Figure1C.png
    :scale: 100 %
-   :alt: Benchmark results of doublet detection methods
+   :alt: Workflow schematic of how raw data is processed to generate true singlets based on a barcode UMI cutoff and doublet removal based on singletCode specifications, followed by the simulation of doublets for benchmarking doublet detection methods. 
+ 
+   *Workflow schematic of how raw data is processed to generate true singlets based on a barcode UMI cutoff and doublet removal based on singletCode specifications, followed by the simulation of doublets for benchmarking doublet detection methods.*
+
+Benchmarking
+------------------
+
+
+We used these datasets to benchmark four doublet detection methods - scDblFinder, DoubletFinder, Scrublet and Hybrid.
+ -  `scDblFinder <https://bioconductor.org/packages/release/bioc/html/scDblFinder.html>`_, DoubletFinder `DoubletFinder <https://github.com/chris-mcginnis-ucsf/DoubletFinder>`_, `Scrublet <https://github.com/AllonKleinLab/scrublet/>`_ and `Hybrid <https://github.com/kostkalab/scds>`_. 
+
+We evaluated the AUPRC, AUROC, TNR, and doublet scores and calls of the four methods and found lower than expected performance for all methods. A plot of our results for AUPRC value is found below.
+
+.. figure:: /images/Figure2A.png
+   :scale: 100 %
+   :alt: Color-coded boxplots of AUPRC value for all four doublet detection methods. Each boxplot is calculated from the AUPRC value after running the respective method on each sample of the dataset with actual doublet rate of 0.08 and expected doublet rate set to 0.05, 0.08, 0.1, 0.15, 0.2, and 0.25 where applicable. Dots represent the mean AUPRC value for a detection method grouped across all samples within a dataset. Lines represent standard deviation of the AUPRC values for a detection method across all samples within a dataset. Boxes span the first and third quartiles. Outliers are not depicted.
+
+   *Color-coded boxplots of AUPRC value for all four doublet detection methods. Each boxplot is calculated from the AUPRC value after running the respective method on each sample of the dataset with actual doublet rate of 0.08 and expected doublet rate set to 0.05, 0.08, 0.1, 0.15, 0.2, and 0.25 where applicable. Dots represent the mean AUPRC value for a detection method grouped across all samples within a dataset. Lines represent standard deviation of the AUPRC values for a detection method across all samples within a dataset. Boxes span the first and third quartiles. Outliers are not depicted.*
+
    
-   Benchmark results of doublet detection methods
+We examined the consistency of doublet labeling across different doublet detection methods by introducing a 'similarity score'—a measure of the fraction of doublets identically classified by two methods. With an average similarity score of 0.66 across all datasets and methods, we observed variability in doublet detection.
 
-Since doublet methodologies yielded different doublet detection performances, we also analysed the data to see if the different methods exhibit any pair-wise patterns of doublet labeling. To do this, we devised a new metric called similarity score, which calculates the fraction of doublets in a sample on which two methods make the same call. Across all datasets and doublet detection methods, the average similarity score was 0.66, suggesting some degree of inconsistency of doublet labeling.
+.. figure:: /images/Figure4A.png
+   :scale: 100 %
+   :alt: Pairwise similarity score between all benchmarked methods. A score of 1 indicates perfect identity and a 0 indicates complete disagreement. Average similarity score across all methods and datasets is 0.66. 
 
-We also asked whether doublet detection methods differ in their performance on the same cell type and experimental design, but performed on multiple platforms. We leveraged TREX-barcoded datasets of the same cell type (mouse brains) sequenced using both 10X Genomics and Smart-seq3. We found variable performance of each doublet detection method on the two datasets.
+   *Pairwise similarity score between all benchmarked methods. A score of 1 indicates perfect identity and a 0 indicates complete disagreement. Average similarity score across all methods and datasets is 0.66.*
 
-The results overall demonstrate that the doublet detection method performances vary depending on their underlying algorithms, some methods exhibiting similar or unique patterns of doublet assignments, with the technologies used to create scRNAseq datasets also impacting the choice of method. More details about the analysis we did on the results of these doublet detection method can be found in our paper.
+We further evaluated doublet detection on ensemble doublet detection methods (hybrid, Chord) and across sequencing technologies (10X Genomics, Smart-seq3). For a more detailed evaluation of our results, refer to our paper. 
 
-We also asked whether our approach could be harnessed for evaluating the performance of doublet detection methods on scATAC-seq datasets and chose Amulet for our proof-of-concept analysis. For this, we used a de-novo generated 10X Genomics Multiome datasets(RNA + ATAC) using the Watermelon barcoding technology. We ran AMULET on the fragment files from the scATAC-seq modality to extract singlet/doublet labels, and, in parallel, extracted true singlets from barcoded scRNA-seq library from the exact same cells. By comparing labels of true negatives and false positives across AMULET and singletCode-extracted singlets from across 6 datasets, we estimated the average TNR for AMULET to be 0.924.
+Heterogeneity effects
+---------------------------
 
+We wanted to know whether heterogeneity of a dataset affects the performance of doublet detection methods. Because heterogeneity can be impacted by many properties of a dataset, such as experimental design and data processing, we made conclusions based on heterogeneity within a sample. We did this by subsampling singlets and doublets within a single PC cluster for a sample (less heterogeneous, low Euclidean distance), and across all clusters for a sample (more heterogeneity, higher Euclidean distance). 
+
+.. figure:: /images/Figure3B.png
+   :scale: 100 %
+   :alt:  Schematic of how transcriptionally similar and dissimilar cells are subsampled for subsequent within-sample heterogeneity determinations. A principal component analysis (left) was performed on each dataset and the first 30 PCs are used to identify Louvain clusters, represented by color. Transcriptionally similar (less heterogeneous) cells are identified from a single cluster and have a low Euclidean distance in PC space. Transcriptionally dissimilar (more heterogeneous) cells are identified from all clusters within the dataset and have a high average Euclidean distance in PC space. 
+
+   *Schematic of how transcriptionally similar and dissimilar cells are subsampled for subsequent within-sample heterogeneity determinations. A principal component analysis (left) was performed on each dataset and the first 30 PCs are used to identify Louvain clusters, represented by color. Transcriptionally similar (less heterogeneous) cells are identified from a single cluster and have a low Euclidean distance in PC space. Transcriptionally dissimilar (more heterogeneous) cells are identified from all clusters within the dataset and have a high average Euclidean distance in PC space.*
+
+singletCode for scATAC-seq doublet detection
+------------------------------------------------
+
+We evaluated our method's ability to assess doublet detection in scATAC-seq datasets using AMULET for a proof-of-concept analysis. We generated Watermelon-barcoded 10X Genomics Multiome datasets and applied AMULET to scATAC-seq fragments to categorize singlets and doublets. Concurrently, we identified true singlets in a barcoded scRNA-seq library from the same cells. By comparing the true negative and false positive rates between AMULET and singletCode across six datasets, we calculated AMULET's average true negative rate (TNR) at 0.924. Our results demonstrate that singletCode can be used to benchmark doublet detection in other modalities besides scRNA-seq.
+
+.. figure:: /images/Figure4G.png
+   :scale: 100 %
+   :alt: Schematic for 10X Single Cell Multiome dataset workflow resulting in TNR calculation. The same cells in the Multiome dataset undergo scATAC-seq, scRNA-seq, and barcode sequencing. Barcodes were processed with singletCode to identify ground truth singlets while the respective fragments file from ATAC was used to label doublets with AMULET. The AMULET-labeled singlets were compared with ground truth singletCode singlets to calculate TNR.
+
+   *Schematic for 10X Single Cell Multiome dataset workflow resulting in TNR calculation. The same cells in the Multiome dataset undergo scATAC-seq, scRNA-seq, and barcode sequencing. Barcodes were processed with singletCode to identify ground truth singlets while the respective fragments file from ATAC was used to label doublets with AMULET. The AMULET-labeled singlets were compared with ground truth singletCode singlets to calculate TNR.*
 
 .. contents:: Contents:
    :local:
