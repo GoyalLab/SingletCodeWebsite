@@ -86,7 +86,7 @@ def count_doublets(df, output_prefix = None, dataset_name = None, sample_type = 
         print("Current Sample Adjusted UMI cutoff: {}".format(cur_umi_adjusted_cutoff))
 
         #Filtering using UMI cutoff
-        cur_good_data = cur_freq_df[cur_freq_df['nUMI'] >= cur_umi_adjusted_cutoff].reset_index(drop=False)
+        cur_good_data = cur_freq_df[cur_freq_df['nUMI'] >= cur_umi_adjusted_cutoff].reset_index(drop=True)
         singlets_list.append(cur_good_data)
 
         low_umi_cells_removed = total_cells - len(cur_good_data["cellID"].unique())
@@ -217,7 +217,7 @@ def identify_singlets_with_dominant_UMI(multiplets_step2,
             dominant_count = 0
             for cur_UMI in cur_UMI_counts:
                 cur_diff = cur_UMI - cur_median_UMI
-                if cur_diff > umi_diff_threshold and cur_UMI > dominant_threshold:
+                if cur_diff > umi_diff_threshold or cur_UMI > dominant_threshold:
                     dominant_count += 1
             if dominant_count == 1:
                 UMI_thres_singlets.append(cur_multiplet)
