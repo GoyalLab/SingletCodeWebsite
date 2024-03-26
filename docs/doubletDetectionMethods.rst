@@ -1,5 +1,5 @@
 ==========================================
-Benchmarking Doublet Detection Methods
+benchmarking doublet detection methods
 ==========================================
 
 Simulation datasets

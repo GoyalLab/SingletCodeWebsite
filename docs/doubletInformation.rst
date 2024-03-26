@@ -1,5 +1,5 @@
 ========================
-Doublets in Sequencing
+doublets in sequencing
 ========================
 
 .. contents::

@@ -1,5 +1,5 @@
 =========================================
-Command Line Interface for singletCode
+command line interface
 =========================================
 
 

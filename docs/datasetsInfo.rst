@@ -1,6 +1,6 @@
 .. _datasetInfo:
 ===============================
-Datasets used in singletCode
+datasets information
 ===============================
 
 7 different barcoding technologies
@@ -14,7 +14,7 @@ Datset Information
    :align: center
    :alt: Datasets from 10 different publications spanning dozens of cell types.
 
-   *Datasets from 10 different publications spanning dozens of cell types.*
+   *Schematic of the structure of different lineage-tracing barcodes, their length, diversity, and fluorescent color. Each barcode contains an expressed fluorescent protein, a unique sequence, known as the barcode, and a polyA tail for capture. The lengths of barcodes in each method are shown as scale bars, and library diversities are shown as circles, sized proportional to their diversity and colored according to fluorescent proteins used.*
 
 Cell Type Diversity
 -------------------------------

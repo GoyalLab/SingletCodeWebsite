@@ -1,5 +1,5 @@
 ===============================
-singletCode Package
+singletCode PyPI package
 ===============================
 
 Availablility

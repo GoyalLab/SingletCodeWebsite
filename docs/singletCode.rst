@@ -1,9 +1,14 @@
 ===================
-What is singletCode?
+what is singletCode?
 ===================
 
 singletCode is a framework to extract true singlets from barcoded scRNA-seq data. Our pipeline identified barcoded singlets from 10 different publications and 6 original experimental scRNA-seq samples generated in this study, encompassing 7 different barcoding technologies, 149 scRNA-seq samples, 3 unique sequencing technologies, and a total of 564,579 cells. Of the 338,948 barcoded cells, we extracted 293,618.(read more about the barcoded datasets we used singletCode with :ref:`here<datasetInfo>`). 
 
+
+.. figure:: /images/Figure1B.png
+   :scale: 50 %
+   :alt: Stacked bar chart showing types of singlets in each dataset. Each color represents one type of barcode composition that constitutes a singlet. Single barcode means one cell ID has one associated lineage barcode. Dominant barcode means one barcode has the highest UMI counts in one cell. Multiple barcodes within or across samples are scenarios where the same barcode combinations are observed in the same sample or across twin samples. See our paper for details.
+   :align: center
 
 Singlet identification
 -----------------------------------
