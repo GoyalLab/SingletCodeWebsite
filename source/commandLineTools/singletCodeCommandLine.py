@@ -39,22 +39,6 @@ Authors:
     - Keerthana M Arun
 """
 
-
-from scipy import io
-import pandas as pd
-import os
-import numpy as np
-from pathlib import Path
-import pathlib
-import argparse
-import shutil
-import os
-import numpy as np
-import argparse
-import shutil
-from .count_doublets_utils import *
-from .watermelonUtilityFunctions import checkInputs, processFastqFiles
-
 ################################
 #                              #
 #       Input Parameters       #
