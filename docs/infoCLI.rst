@@ -14,7 +14,9 @@ The source code for the command line tool is available in our GitHub repository 
 Using the Interface
 -----------------------
 
-Detailed information about the parameters for the functions in the package
+Navigating to commandLineTools folder, you will find 3 files and you will need to run  singletCodeCommandLine.py. There are 2 modules available, one to run singletCode and the other to create a sample sheet if you have used watermelon barcoding techmology using the fastq sequenced files from MISEQ technology.
+
+Detailed information about the modules in the command line interface
 -----------------------------------------------------------------------------
 
 singletCode Command Line
