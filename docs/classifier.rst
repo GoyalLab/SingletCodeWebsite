@@ -27,7 +27,7 @@ How well does it perform?
 We achieved significantly higher AUPRC and AUROC scores using our classifier compared to the other methods we benchmarked for doublet detection. 
 
 .. figure:: /images/Figure6B.png
-   :scale: 50 %
+   :scale: 30 %
    :alt: Results of classifier doublet detection compared to other doublet detection methods as measured by AUPRC. Each dot represents the average AUPRC score of a doublet detection method (color) on a given dataset (x-axis). The ribbon has the width of the standard deviation of the AUPRC score for each doublet detection method.
 
    *Results of classifier doublet detection compared to other doublet detection methods as measured by AUPRC. Each dot represents the average AUPRC score of a doublet detection method (color) on a given dataset (x-axis). The ribbon has the width of the standard deviation of the AUPRC score for each doublet detection method.*
@@ -41,6 +41,7 @@ Although barcoding experiments are becoming increasingly prevalent, they are sti
 
 .. figure:: /images/Figure6G.png
    :scale: 50 %
+   :align: center
    :alt: Schematic of training a doublet classifier on barcoded data from 1 experiment and using that classifier to identify doublets in a biological replicate, experiment 2.
 
    *Schematic of training a doublet classifier on barcoded data from 1 experiment and using that classifier to identify doublets in a biological replicate, experiment 2.*

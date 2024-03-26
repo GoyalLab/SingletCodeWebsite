@@ -2,13 +2,15 @@
 ===============================
 Datasets used in singletCode
 ===============================
+
 7 different barcoding technologies
 We incorporated datasets using FateMap, ClonMapper, SPLINTR, LARRY, CellTag-multi, Watermelon, and TREX barcodes. Each have their own recovery and analysis specifications that we outline in Box 1 of our paper.
 
 Datset Information
 -----------------------------
+
 .. figure:: /images/Box1.png
-   :scale: 30 %
+   :scale: 25 %
    :align: center
    :alt: Datasets from 10 different publications spanning dozens of cell types.
 

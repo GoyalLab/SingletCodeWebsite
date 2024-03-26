@@ -1,5 +1,5 @@
 ===============================
-Documentation for singletCode
+singletCode Package
 ===============================
 
 Availablility
@@ -60,12 +60,13 @@ How to use it?
 
 
 
-Detailed information about the parameters for the functions in the package.
---------------------------------------------------------------
+Detailed information about the parameters for the functions in the package
+-----------------------------------------------------------------------------
+
 .. currentmodule:: source.singletCode.singletCode
 
 get_singlets
-------------
+---------------
 
 .. autofunction:: get_singlets
 

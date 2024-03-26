@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to the documentation of Singlet Code!
+Welcome to the documentation of singletCode!
 ===================================================
 
 singletCode `(link to preprint) <https://www.biorxiv.org/content/10.1101/2023.08.04.552078v2>`_ uses cell barcoding technology to identify **true singlets** in scRNAseq data. In our preprint, we used singletCode to benchmark existing doublet detection methods and train a classifier to detect singlets in non-barcoded datasets as well of the same cell type.
@@ -19,11 +19,13 @@ singletCode `(link to preprint) <https://www.biorxiv.org/content/10.1101/2023.08
    doubletDetectionMethods
    datasetsInfo
    packageDocumentation
+   infoCLI
    Contact
    references
    Link to Paper <https://www.biorxiv.org/content/10.1101/2023.08.04.552078v2>
    Lab Website <https://www.goyallab.org/>
-   Github repository <https://github.com/GoyalLab/fatemap_multiplet_public>
+   Github repository for analyses in paper <https://github.com/GoyalLab/fatemap_multiplet_public>
+   Github repository for singletCode tools <https://github.com/GoyalLab/singletCodeTools>
 
 
       

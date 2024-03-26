@@ -27,7 +27,7 @@ We used these datasets to benchmark four doublet detection methods:
 We evaluated the AUPRC, AUROC, TNR, and doublet scores and calls of the four methods and found lower than expected performance for all methods. A plot of our results for AUPRC value is found below.
 
 .. figure:: /images/Figure2A.png
-   :scale: 50 %
+   :scale: 40 %
    :align: center
    :alt: Color-coded boxplots of AUPRC value for all four doublet detection methods. Each boxplot is calculated from the AUPRC value after running the respective method on each sample of the dataset with actual doublet rate of 0.08 and expected doublet rate set to 0.05, 0.08, 0.1, 0.15, 0.2, and 0.25 where applicable. Dots represent the mean AUPRC value for a detection method grouped across all samples within a dataset. Lines represent standard deviation of the AUPRC values for a detection method across all samples within a dataset. Boxes span the first and third quartiles. Outliers are not depicted.
 
