@@ -29,7 +29,8 @@ We achieved significantly higher AUPRC and AUROC scores using our classifier com
 .. figure:: /images/Figure6B.png
    :scale: 30 %
    :alt: Results of classifier doublet detection compared to other doublet detection methods as measured by AUPRC. Each dot represents the average AUPRC score of a doublet detection method (color) on a given dataset (x-axis). The ribbon has the width of the standard deviation of the AUPRC score for each doublet detection method.
-
+   :align: center
+   
    *Results of classifier doublet detection compared to other doublet detection methods as measured by AUPRC. Each dot represents the average AUPRC score of a doublet detection method (color) on a given dataset (x-axis). The ribbon has the width of the standard deviation of the AUPRC score for each doublet detection method.*
 
 .. _classifier-Nonebarcoded:
