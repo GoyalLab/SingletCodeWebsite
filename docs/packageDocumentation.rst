@@ -4,7 +4,7 @@ Documentation for singletCode
 
 Availablility
 -----------------
-The package is available on PyPI as `singletCode <https://pypi.org/project/singletCode/1.0.0/>_`. 
+The package is available on PyPI as `singletCode <https://pypi.org/project/singletCode/1.0.0/>_` . 
 
 .. _package-info:
 

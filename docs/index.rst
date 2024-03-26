@@ -6,7 +6,7 @@
 Welcome to the documentation of Singlet Code!
 ===================================================
 
-singletCode`(link to preprint) <https://www.biorxiv.org/content/10.1101/2023.08.04.552078v2>`_ uses cell barcoding technology to identify **true singlets** in scRNAseq data. In our preprint, we used singletCode to benchmark existing doublet detection methods and train a classifier to detect singlets in non-barcoded datasets as well of the same cell type.
+singletCode `(link to preprint) <https://www.biorxiv.org/content/10.1101/2023.08.04.552078v2>`_ uses cell barcoding technology to identify **true singlets** in scRNAseq data. In our preprint, we used singletCode to benchmark existing doublet detection methods and train a classifier to detect singlets in non-barcoded datasets as well of the same cell type.
 
 
 .. toctree::
@@ -19,7 +19,7 @@ singletCode`(link to preprint) <https://www.biorxiv.org/content/10.1101/2023.08.
    doubletDetectionMethods
    datasetsInfo
    packageDocumentation
-   FAQs
+   Contact
    references
    Link to Paper <https://www.biorxiv.org/content/10.1101/2023.08.04.552078v2>
    Lab Website <https://www.goyallab.org/>
