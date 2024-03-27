@@ -23,7 +23,7 @@ dataset details
 
 .. csv-table:: Specifications for barcoded and non-barcoded datasets
    :file: /tables/ZhangMelzerEtAlTableS2.csv
-   :widths: 30
+   :widths: 11
    :header-rows: 1
 
 
