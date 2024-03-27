@@ -1,0 +1,40 @@
+Table S2. Specifications for barcoded and non-barcoded datasets,,,,,,,,,
+,,,,,,,,,
+Dataset Name,Alias ID,Sample type,Organism,Tissue,Cell line,Genotype,Treatment,Total samples,Publication
+,barcoded scRNA-seq datasets,,,,,,,,
+Goyal et al. 1,FM01,Melanoma patient resistant cell line,Homo sapiens,Skin-derived,WM989 A6-G3,BRAF – V600E,Targeted therapy,4,"Goyal et al., Nature, 2023"
+Goyal et al. 2,FM02,Melanoma patient resistant cell line,Homo sapiens,Skin-derived,WM989 A6-G3,BRAF – V600E,Targeted therapy,4,"Goyal et al., Nature, 2023"
+Goyal et al. 3,FM03,Melanoma patient resistant cell line,Homo sapiens,Skin-derived,WM989 A6-G3,BRAF – V600E,Targeted therapy,2,"Goyal et al., Nature, 2023"
+Goyal et al. 4,FM04,Breast cancer patient resistant cell line,Homo sapiens,Breast; mammary gland,MDA-MB-231-D4,"BRAF – G464V, KRAS – G13D, TERT – c.1-124C>T, TP53 – R280K","Chemotherapy, cytotoxic",2,"Goyal et al., Nature, 2023"
+Goyal et al. 5,FM05,Melanoma patient resistant cell line,Homo sapiens,Skin-derived,WM989 A6-G3,BRAF – V600E,Targeted therapy,2,"Goyal et al., Nature, 2023"
+Goyal et al. 6,FM06,Melanoma patient untreated cell line,Homo sapiens,Skin-derived,WM989 A6-G3,BRAF – V600E,No treatment,2,"Goyal et al., Nature, 2023"
+Goyal et al. 8,FM08,Primary melanocytes,Homo sapiens,Skin-derived,FOM230-1,WT,No treatment,3,"Goyal et al., Nature, 2023"
+Jiang et al.,non_cancer,HIPS differentiation,Homo sapiens,PBMCs,PENN123i-SV20,WT,Cardiac differentiation signal,2,"Jiang et al., Genome Biol, 2022"
+Jain et al.,Biorxiv,Stem cell reprogramming,Homo sapiens,Fibroblasts,hiF-T,WT,OKSM,6,"Jain et al., Cell Systems, 2024"
+TREX,TREX,neuroepithelial progenitor cells differentiation,Mus musculus,Neural,CD-1,-,No treatment,4,"Ratz et al., Nature neuroscience, 2022"
+LARRY,"LARRY, LK",pan-myeloid differentiation,Mus musculus,Blood,Lin-Kit+,-,cytokines and growth factors,18,"Weinreb et al., Science, 2020"
+LARRY,"LARRY, LSK",pan-myeloid differentiation,Mus musculus,Blood,Lin-Kit+Sca-1+,-,cytokines and growth factors,15,"Weinreb et al., Science, 2020"
+SPLINTR,SPLINTR_chemo,Acute myeloid leukaemia,Mus musculus,Bone marrow,C57BL/6,MLL-AF9 + KrasG12D,chemotherapy,10,"Fennell et al., Nature, 2022"
+SPLINTR,SPLINTR_clone,Acute myeloid leukaemia,Mus musculus,Bone marrow,C57BL/6,"MLL-AF9, MLL-AF9 + KrasG12D, MLL-AF9 + Flt3ITD",No treatment,4,"Fennell et al., Nature, 2022"
+SPLINTR,SPLINTR_chemoretrans,Acute myeloid leukaemia,Mus musculus,Bone marrow and spleen,C57BL/6,MLL-AF9 + KrasG12D,No treatment,1,"Fennell et al., Nature, 2022"
+Watermelon,Watermelon,Breast cancer patient resistant cell line,Homo sapiens,Breast; mammary gland,T-47D,"PIK3CA – H1047R; 
+Tp53 – L194F",Targeted therapy,6,This paper
+CellTag-multi,CellTag-multi_d,multilineage differentiation (hematopoiesis),Mus musculus,bone marrow,LSK,-,cytokines and growth factors,8,"Jindal et al., Nature biotechnology, 2023"
+CellTag-multi,CellTag-multi_B4,iEP reporgramming,Mus musculus,embryo,C57BL/6J,-,EGF,50,"Jindal et al., Nature biotechnology, 2023"
+ClonMapper,ClonMapper,CLL resistant cell lines,Homo sapiens,blood,HG3,-,Chemotherapy,4,"Gutierrez et al., Nature Cancer, 2021"
+Smart-seq3,Smart-seq3,neuroepithelial progenitor cells differentiation,Mus musculus,Neural,CD-1,-,No treatment,2,"Mold et al., Cell systems, 2024"
+,nonbarcoded sc-RNA seq datasets,,,,,,,,
+non-barcoded,hm-12k,Synthetic dataset,"Homo sapiens, Mus musculus","Human kidney, Murine fibroblasts","HEK293T, NIH3T3",WT,No treatment,1,"Zheng et al., Nat Commun, 2017"
+non-barcoded,hm-6k,Synthetic dataset,"Homo sapiens, Mus musculus","Human kidney, Murine fibroblasts","HEK293T, NIH3T3",WT,No treatment,1,"Zheng et al., Nat Commun, 2017"
+non-barcoded,HMEC-orig-MULTI,HMECs,Homo sapiens,mammary gland,HMEC,WT,No treatment,1,"McGinnis et al., Cell Syst., 2019"
+non-barcoded,HMEC-rep-MULTI,HMECs,Homo sapiens,mammary gland,HMEC,WT,No treatment,1,"McGinnis et al., Cell Syst., 2019"
+non-barcoded,HEK-HMEC-MULTI,Synthetic dataset,Homo sapiens,"Human kidney, mammary gland","HEK293T, HMEC",WT,No treatment,1,"McGinnis et al., Cell Syst., 2019"
+non-barcoded,mkidney-ch,Mouse kidney cells,Mus musculus,Mouse kidney,C57BL/6J,WT,No treatment,1,"Bernstein et al., Cell Syst., 2020"
+non-barcoded,pbmc-2ctrl-dm,Patient PBMCs,Homo sapiens,Systemic lupus erythematosus (SLE) PBMCs,Patient- derived,Patient- derived,No treatment,1,"Kang et al., Nat. Biotechnol., 2018"
+non-barcoded,pbmc-2stim-dm,Patient PBMCs,Homo sapiens,Systemic lupus erythematosus (SLE) PBMCs,Patient- derived,Patient- derived,No treatment,1,"Kang et al., Nat. Biotechnol., 2018"
+non-barcoded,pbmc-ch,Human PBMCs,Homo sapiens,blood,human - derived,human - derived,No treatment,1,"Stoeckius et al., Genome Biol., 2018"
+non-barcoded,pdx-MULTI,Synthetic dataset,"Homo sapiens, Mus musculus","Human breast cancer, mouse immue",PDX mouse model,PDX mouse model,No treatment,1,"McGinnis et al., Cell Syst., 2019"
+non-barcoded,nuc-MULTI,Synthetic dataset,"Homo sapiens, Mus musculus",nuclei,-,-,No treatment,1,"McGinnis et al., Cell Syst., 2019"
+,scATAC seq datasets,,,,,,,,
+ATAC,Watermelon ATAC-seq,Breast cancer patient resistant cell line,Homo sapiens,Breast; mammary gland,MCF7,"GATA3 – D336G; 
+PIK3CA – E545K",Targeted therapy,6,This paper

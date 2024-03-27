@@ -8,7 +8,7 @@ The package is available on PyPI as `singletCode <https://pypi.org/project/singl
 
 .. _package-info:
 
-How to use it?
+How do I use it?
 ------------------
 
     #. Installation

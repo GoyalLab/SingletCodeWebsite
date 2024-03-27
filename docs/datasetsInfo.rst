@@ -1,13 +1,13 @@
 .. _datasetInfo:
 ===============================
-datasets information
+dataset information
 ===============================
+
+barcoding technologies assessed
+-----------------------------
 
 7 different barcoding technologies
 We incorporated datasets using FateMap, ClonMapper, SPLINTR, LARRY, CellTag-multi, Watermelon, and TREX barcodes. Each have their own recovery and analysis specifications that we outline in Box 1 of our paper.
-
-Datset Information
------------------------------
 
 .. figure:: /images/Box1.png
    :scale: 25 %
@@ -16,7 +16,18 @@ Datset Information
 
    *Schematic of the structure of different lineage-tracing barcodes, their length, diversity, and fluorescent color. Each barcode contains an expressed fluorescent protein, a unique sequence, known as the barcode, and a polyA tail for capture. The lengths of barcodes in each method are shown as scale bars, and library diversities are shown as circles, sized proportional to their diversity and colored according to fluorescent proteins used.*
 
-Cell Type Diversity
+
+
+dataset information
+-----------------------------
+
+.. csv-table:: /tables/ZhangMelzerEtAlTableS2.csv
+   :file: CSV file path and name
+   :widths: 10
+   :header-rows: 3
+
+
+cell types
 -------------------------------
 
 .. figure:: /images/Figure1D.png

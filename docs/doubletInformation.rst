@@ -35,10 +35,8 @@ Doublets are problematic because they can impact the conclusions of scRNA-seq do
 
 
 .. line-block::
-   **Clustering stability**
-   Clustering is one of the most common analyses done to infer the identity of similar cells. When the number of doublets were increased, the probability of getting the correct number of cell clusters decreased. This might lead to spurious clusters or a genuine sub-type of cells not being identified as a distinct group. For details about our results, see our paper.
 
-   **Differential expression**
+   **differential expression**
    Differential expression is used to identify the genes that are differentially expressed between cells belonging to different conditions. The genes identified could be used to explain the phenotype observed or examine pathways involved. Our results indicated that increasing doublet rate decreases the precision, recall, and true negative rate (TNR) for the datasets when compared to the differentially expressed genes inferred from the clean singlets-only dataset, with a higher doublet rate leading to worse performance.
 
 .. figure:: images/Figure5B.png
@@ -49,10 +47,13 @@ Doublets are problematic because they can impact the conclusions of scRNA-seq do
    *Differential expression analysis results for all datasets using MAST :cite:p:`Finak2015-bh` (purple, left) and Wilcox :cite:p:`Fay2010-hf` (blue, right) on two randomly chosen clusters at various doublet rates. Line color shade represents the % doublet rate, with a more saturated color indicative of a higher doublet rate. Precision, recall and TNR are calculated against ground truth differentially expressed genes in the corresponding dataset without doublets. P-values between variable doublet rate datasets are calculated with a paired Wilcoxon signed-rank test.*
 
 .. line-block::
-   **Cell-cell communication inference**
+   **clustering stability**
+   Clustering is one of the most common analyses done to infer the identity of similar cells. When the number of doublets were increased, the probability of getting the correct number of cell clusters decreased. This might lead to spurious clusters or a genuine sub-type of cells not being identified as a distinct group. For details about our results, see our paper.
+
+   **cell-cell communication**
    Cell-cell communication inference can provide information about intercellular communication networks. This can be used to understand the role of cell-cell interactions in biological processes. Increasing the doublet rate decreases the precision and recall for communication pathways identified when compared to the clean singlets only datasets. For details about our results, see our paper.
 
-   **Cell Trajectory**
+   **cell trajectory**
    Increasing doublet rate caused the trajectory to deviate away from the trajectory inferred from the clean singlet-only datasets and there were gain/loss of lineages when doublets were introduced. For details about our results, see our paper.
 
 
