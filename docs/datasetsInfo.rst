@@ -1,10 +1,11 @@
 .. _datasetInfo:
+
 ===============================
 dataset information
 ===============================
 
 barcoding technologies assessed
------------------------------
+---------------------------------------
 
 7 different barcoding technologies
 We incorporated datasets using FateMap, ClonMapper, SPLINTR, LARRY, CellTag-multi, Watermelon, and TREX barcodes. Each have their own recovery and analysis specifications that we outline in Box 1 of our paper.

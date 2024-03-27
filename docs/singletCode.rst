@@ -1,6 +1,6 @@
-===================
+======================
 what is singletCode?
-===================
+======================
 
 singletCode is a framework to extract true singlets from barcoded scRNA-seq data. Our pipeline identified barcoded singlets from 10 different publications and 6 original experimental scRNA-seq samples generated in this study, encompassing 7 different barcoding technologies, 149 scRNA-seq samples, 3 unique sequencing technologies, and a total of 564,579 cells. Of the 338,948 barcoded cells, we extracted 293,618.(read more about the barcoded datasets we used singletCode with :ref:`here<datasetInfo>`). 
 

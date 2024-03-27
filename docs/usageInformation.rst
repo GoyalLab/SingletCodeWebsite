@@ -1,5 +1,5 @@
 implementing singletCode on your data
-===================================
+========================================
 
 singletCode is a framework that can be extended to most scRNA-seq or even scATAC-seq data to accurately identify singlets.
 
