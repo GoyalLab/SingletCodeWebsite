@@ -1,5 +1,3 @@
-Table S2. Specifications for barcoded and non-barcoded datasets,,,,,,,,,
-,,,,,,,,,
 Dataset Name,Alias ID,Sample type,Organism,Tissue,Cell line,Genotype,Treatment,Total samples,Publication
 ,barcoded scRNA-seq datasets,,,,,,,,
 Goyal et al. 1,FM01,Melanoma patient resistant cell line,Homo sapiens,Skin-derived,WM989 A6-G3,BRAF – V600E,Targeted therapy,4,"Goyal et al., Nature, 2023"

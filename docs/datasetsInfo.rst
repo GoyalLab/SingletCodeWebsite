@@ -21,10 +21,10 @@ We incorporated datasets using FateMap, ClonMapper, SPLINTR, LARRY, CellTag-mult
 dataset details
 -----------------------------
 
-.. csv-table:: dataset details
+.. csv-table:: Specifications for barcoded and non-barcoded datasets
    :file: /tables/ZhangMelzerEtAlTableS2.csv
-   :widths: 10
-   :header-rows: 3
+   :widths: 30
+   :header-rows: 1
 
 
 cell types
