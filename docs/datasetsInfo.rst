@@ -18,11 +18,11 @@ We incorporated datasets using FateMap, ClonMapper, SPLINTR, LARRY, CellTag-mult
 
 
 
-dataset information
+dataset details
 -----------------------------
 
-.. csv-table:: /tables/ZhangMelzerEtAlTableS2.csv
-   :file: CSV file path and name
+.. csv-table:: dataset details
+   :file: /tables/ZhangMelzerEtAlTableS2.csv
    :widths: 10
    :header-rows: 3
 
