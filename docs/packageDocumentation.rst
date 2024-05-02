@@ -18,6 +18,7 @@ How do I use it?
         .. code-block:: python
 
             pip3 install singletCode
+            from singletCode import check_sample_sheet, get_singlets 
     
     #. Preparing the input sample sheet.
 
@@ -27,7 +28,7 @@ How do I use it?
 
         .. code-block:: python
 
-            import Pandas as pd
+            import pandas as pd
             df = pd.read_csv("path/to/csv/file.csv")
 
         You can check if the format and the column names are valid for running singletCode using check_sample_sheet function.
