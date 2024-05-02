@@ -31,7 +31,7 @@ def get_singlets(sample_sheet, output_path = None, dataset_name = None, sample_t
         umi_cutoff_ratio (float, optional): The ratio used to determine the umi_cutoff if umi_cutoff_method is 
             "ratio". Defaults to 3/4e5.
         umi_cutoff_percentile (float, optional): If umi_cutoff_method is "percentile", then the umi_cutoff will be 
-            the minimum UMI count required to be in the top umi_cutoff_percentile'th percentile. Defaults to 0.75.
+            the minimum UMI count required to be in the top umi_cutoff_percentile'th percentile. There is no default and if umi_cutoff_method is set to "percentile", then manually set this parameter.
         min_umi_cutoff (int, optional): This is the absolute minimum number of UMIs that need to be associated with 
             a barcode for it to be considered a barcode. However, the actual umi_cutoff used will be the greater 
             of min_umi_cutoff and the cutoff calculated using umi_cutoff_method. Defaults to 10.
