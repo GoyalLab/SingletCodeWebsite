@@ -1,7 +1,7 @@
 #Module which has the the main functions
 from .count_doublets_utils_copy import count_doublets
 
-def get_singlets(sample_sheet, output_path = None, dataset_name = None, sample_type = "RNA",
+def get_singlets(sample_sheet, output_path = None, dataset_name = None,
                 save_all_singlet_categories = False, save_plot_umi = False, 
                 umi_cutoff_method = "ratio", umi_cutoff_ratio = 3/4e5, 
                 umi_cutoff_percentile= None,  min_umi_cutoff =2, umi_diff_threshold = 50,
@@ -19,9 +19,6 @@ def get_singlets(sample_sheet, output_path = None, dataset_name = None, sample_t
             and what the umi_cutoff used is, csv files containing singlets of different categories. If None, 
             then the list of singlets will be returned but it won’t contain information about what category of 
             singlet each cell is. Defaults to None.
-        sample_type (str, optional): Specify if the barcodes are from RNAseq or ATACseq data. If it is from ATACseq 
-            data, any barcode with more than 2 UMI will be filtered out since there can be at most 2 copies of 
-            the barcode in the genome and hence, at most 2 UMI associated with it. Defaults to 'RNAseq'.
         save_all_singlet_categories (bool, optional): If true, then singlets of each category are saved separately 
             in csv files along with all singlets and all non-singlets. Defaults to False.
         save_plot_umi (bool, optional): If true, then plots showing UMI distribution indicating the UMI cutoff used 
@@ -56,7 +53,6 @@ def get_singlets(sample_sheet, output_path = None, dataset_name = None, sample_t
             umi_diff_threshold=umi_diff_threshold,
             dominant_threshold=umi_dominant_threshold,
             min_umi_good_data_cutoff=min_umi_cutoff,
-            sample_type = sample_type, 
             umi_cutoff_method = umi_cutoff_method,
             dataset_name = dataset_name
     )
