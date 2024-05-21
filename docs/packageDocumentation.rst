@@ -53,7 +53,7 @@ How do I use it?
         
         .. code-block:: python
 
-            singletList = cellLabelList[cellLabelList["label"] == "singlet"]
+            singletList = cellLabelList[cellLabelList["label"] == "Singlet"]
 
         **stats** contains the statistics for each sample present in your dataset about: total cells, total number of singlets, number of singlets recovered from different categories of singlets (like single barcode singlets, muli-barcode singlets, dominant UMI singlets), number of cells removed due to low UMI counts for the barcode and number of non-determined since singletCode can identify only truly singlet cells but not be certain if the other cells are truly not singlets. 
 
