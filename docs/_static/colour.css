@@ -1,14 +1,14 @@
 .wy-nav-top {
-    background-color: #8198fd;
+    background-color: #8290cd;
 }
 
 .wy-side-nav-search {
-    background-color: #8198fd;
+    background-color: #8290cd;
     color: #eef4ff;
 }
 
 .ul.wu-breadcrumbs::before {
-    color: #8198fd;
+    color: #8290cd;
 }
 
 .wy-side-nav-search.icon-home::before {
@@ -21,12 +21,12 @@
 
 .wy-menu-vertical .toctree-l1.current{
     background-color: #eef4ff;
-    color: #8198fd;
+    color: #8290cd;
 }
 
 .wy-menu-vertical .toctree-l2{
     background-color: #eef4ff;
-    color: #8198fd;
+    color: #8290cd;
     -webkit-text-fill-color: black;
 }
 /* .wy-side-nav-search input[type=text] {
@@ -35,7 +35,7 @@
 
 
 .wy-nav-side {
-    background: #8198fd;
+    background: #8290cd;
     color: #eef4ff;
 }
 
@@ -48,5 +48,5 @@
 } */
 
 .rst-versions {
-    border-top: solid 10px #8198fd;
+    border-top: solid 10px #8290cd;
 }
