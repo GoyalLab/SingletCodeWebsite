@@ -27,14 +27,12 @@
 .wy-menu-vertical .toctree-l2{
     background-color: #eef4ff;
     color: #b2c0ff;
+    -webkit-text-fill-color: black;
 }
 /* .wy-side-nav-search input[type=text] {
     border-color: #b53c86;
 } */
 
-.wy-menu-vertical .toctree-l2 a {
-    color: #000000; /* Set text color to black */
-}
 
 .wy-nav-side {
     background: #b2c0ff;
