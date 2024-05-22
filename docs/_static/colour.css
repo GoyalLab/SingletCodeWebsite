@@ -1,40 +1,40 @@
 .wy-nav-top {
-    background-color: #b53c86;
+    background-color: #b2c0ff;
 }
 
 .wy-side-nav-search {
-    background-color: #b53c86;
-    color: #FFFFFF;
+    background-color: #b2c0ff;
+    color: #eef4ff;
 }
 
 .ul.wu-breadcrumbs::before {
-    color: #b53c86;
+    color: #b2c0ff;
 }
 
 .wy-side-nav-search.icon-home::before {
-    color: #FFFFFF;
+    color: #eef4ff;
 }
 
 .wy-side-nav-search :text {
-    background-color: #FFFFFF;
+    background-color: #eef4ff;
 }
 
 .wy-menu-vertical .toctree-l1.current{
-    background-color: #FFFFFF;
-    color: #b53c86;
+    background-color: #eef4ff;
+    color: #b2c0ff;
 }
 
 .wy-menu-vertical .toctree-l2{
-    background-color: #FFFFFF;
-    color: #b53c86;
+    background-color: #eef4ff;
+    color: #b2c0ff;
 }
 /* .wy-side-nav-search input[type=text] {
     border-color: #b53c86;
 } */
 
 .wy-nav-side {
-    background: #b53c86;
-    color: white;
+    background: #b2c0ff;
+    color: #eef4ff;
 }
 
 .wy-menu-vertical a {
@@ -42,9 +42,9 @@
 }
 
 /* .wy-menu-vertical a:hover {
-    background-color: #b53c86;
+    background-color: #b2c0ff;
 } */
 
 .rst-versions {
-    border-top: solid 10px #b53c86;
+    border-top: solid 10px #b2c0ff;
 }

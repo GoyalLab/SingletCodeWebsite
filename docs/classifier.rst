@@ -38,7 +38,7 @@ We achieved significantly higher AUPRC and AUROC scores using our classifier com
 Classifying doublets in non-barcoded datasets 
 ------------------------------------------------
 
-Although barcoding experiments are becoming increasingly prevalent, they are still relatively uncommon. Therefore, we sought to train a doublet classifier on barcoded data that could detect doublets in non-barcoded data. We trained a classifier on a melanoma cell sample using true singlet labels from singletCode and successfully identified doublets in a similar cell sample without needing barcoding data. 
+Although barcoding experiments are becoming increasingly prevalent, they are still relatively uncommon. Therefore, we sought to train a doublet classifier on barcoded data that could detect doublets in non-barcoded data. We trained a classifier on cell samples from melanoma, mouse brain, leukemia, and bone marrow/leukemia using true singlet labels from singletCode and successfully identified doublets in a similar cell sample without needing barcoding data. Further, we integrated all the data from mouse and human samples together, split it in half, and it to train a classifier that was then tested on individual sample components of the opposite half. This, too, proved to outperform other doublet detection methods.
 
 .. figure:: /images/Figure6G.png
    :scale: 50 %
@@ -48,6 +48,7 @@ Although barcoding experiments are becoming increasingly prevalent, they are sti
    *Schematic of training a doublet classifier on barcoded data from 1 experiment and using that classifier to identify doublets in a biological replicate, experiment 2.*
 
 As barcoded scRNA-seq data becomes more abundant, experimenters can train a classifier specific to their cell type using a barcoded subset of data, and, eventually, there could be enough data to train a classifier on multiple barcoded cell types which can be used more generally.
+
 
 .. contents:: Contents:
    :local:
