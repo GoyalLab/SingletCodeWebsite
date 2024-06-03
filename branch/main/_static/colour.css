@@ -1,0 +1,52 @@
+.wy-nav-top {
+    background-color: #8290cd;
+}
+
+.wy-side-nav-search {
+    background-color: #8290cd;
+    color: #eef4ff;
+}
+
+.ul.wu-breadcrumbs::before {
+    color: #8290cd;
+}
+
+.wy-side-nav-search.icon-home::before {
+    color: #eef4ff;
+}
+
+.wy-side-nav-search :text {
+    background-color: #eef4ff;
+}
+
+.wy-menu-vertical .toctree-l1.current{
+    background-color: #eef4ff;
+    color: #8290cd;
+}
+
+.wy-menu-vertical .toctree-l2{
+    background-color: #eef4ff;
+    color: #8290cd;
+    -webkit-text-fill-color: black;
+}
+/* .wy-side-nav-search input[type=text] {
+    border-color: #b53c86;
+} */
+
+
+.wy-nav-side {
+    background: #8290cd;
+    color: #eef4ff;
+}
+
+.wy-menu-vertical a {
+    color: inherit;
+}
+
+/* .wy-menu-vertical a:hover {
+    background-color: #b2c0ff;
+} */
+
+.rst-versions {
+    border-top: solid 10px #8290cd;
+}
