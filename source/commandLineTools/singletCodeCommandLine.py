@@ -15,7 +15,7 @@ Usage:
     
     .. code-block:: bash
     
-        python3 singletCode.py watermelon -i /path/to/fastq/files -o path/to/save/csv/file -s path/sample/sheet -use10X False -input10X path/to/barcodes/tsv 
+        python3 singletCodeCommadLine.py watermelon -i /path/to/fastq/files -o path/to/save/csv/file -s path/sample/sheet -use10X False -input10X path/to/barcodes/tsv 
 
 Options for Count Module:
     - -i, --input_file: Specify the path to the input barcode file.
@@ -55,8 +55,8 @@ Authors:
 # umi_cutoff_ratio = 3 / 4e5
 
 import argparse
-from count_doublets_utils import *
-from watermelonUtilityFunctions import *
+# from count_doublets_utils import *
+# from watermelonUtilityFunctions import *
 
 if __name__ == "__main__":
     # Create the top-level parser
