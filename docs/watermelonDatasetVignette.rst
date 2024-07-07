@@ -16,8 +16,8 @@ First step is to understand the samples present in the FASTQ files.
 The sample fastq files are in the inputFolder. We can identify the
 sample name and number from the FASTQ file. For example,
 sampleName_S1_L001_R1_001.fastq.gz means that the sample name is
-sampleName and sample number is 1.Make sure that both read 1 and read 2
-for each sample are present in the same folder (R1 and R2)
+sampleName and sample number is 1. Make sure that both read 1 and read 2
+for each sample are present in the same folder (R1 and R2).
 
 Creating sample sheet for these two samples.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -29,7 +29,7 @@ Creating sample sheet for these two samples.
 .. code:: ipython3
 
     Path = "path/to/where/the/repo/was/cloned"
-    p = "path/to/zipped/folder"
+    p = "path/to/zipped/folder/after/unzipping"
 
 .. code:: ipython3
 
@@ -91,6 +91,9 @@ GitHub. Let the path to the folder you are running this command be
 
     !git clone https://github.com/GoyalLab/singletCodeTools
 
+Running watermelon module 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Now, to run the watermelon module of singletCodeTools, you need to run
 this command. If we are going by the folder structure of the zipped file
 and **p** is *path to the unzipped folder containing example files*,
@@ -125,12 +128,12 @@ If this is not true for the barcodes in your data, then you can go to
 *Path/commandLine/watermelonUtilityFunctions.py* and change the line
 starting with **pattern =**.
 
-Using 10X list of cell IDs to check that all the cell IDs were also captured in scRNAseq
+Using 10X list of cell IDs as check
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you want to use a 10X single-cell RNA sequencing of the same set of
 cells to check which barcoded cells are of interest to you, then you can
-add –use10X flag to your command and provide the path to the list of
+add -–use10X flag to your command and provide the path to the list of
 cell IDs.
 
 .. code:: ipython3
@@ -143,7 +146,7 @@ cell IDs.
         '-o', f'{p}/outputFiles/',
         '-s', f'{p}/inputFiles/sampleSheet.csv',
         '--outputName', 'watermelonBarcodeUmiWith10X.csv',
-        '--use10X', "True",
+        '--use10X',
         '--input10X', 'barcodes.tsv'
     ], capture_output=True, text=True)
     
@@ -155,14 +158,13 @@ cell IDs.
         print("Command failed")
         print("Error:\n", result.stderr)
 
-Run singletCode to identify true singlets using the cellID-Barcode-UMI file just created
+singletCode module to identify true singlets
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Using the count module available in the command line
+Using the count module available in the command line and the sheet we just created which
+has details about cellID, barcode and sample, we can identify true singlets
 
 .. code:: ipython3
-
-    import subprocess
     
     result = subprocess.run([
         'python',
@@ -180,13 +182,14 @@ Using the count module available in the command line
         print("Command failed")
         print("Error:\n", result.stderr)
 
-There different files which are output from this command: 1. different
-kinds of singlets in each of the samples: single_barcode, dominant_umi,
-multi_barcode 2. a combined list of all singlets for a sample:
-singlets_all 3. a csv file containing the statistics of each kind of
+There are different files which are output from this command: 
+1. different kinds of singlets in each of the samples: single_barcode,
+dominant_umi, multi_barcode 
+2. a combined list of all singlets for a sample: singlets_all 
+3. a csv file containing the statistics of each kind of
 singlet, number of potential multiplets and cells filtered out due to
-low UMI counts of barcodes 4. the list of potential multiplets for each
-of the samples: multiplets
+low UMI counts of barcodes 
+4. the list of potential multiplets for each of the samples: multiplets
 
 For more explanation on different kinds of singlets seen in the output
 files, you can refer
