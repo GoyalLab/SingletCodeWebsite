@@ -44,6 +44,7 @@ extensions = [
     'sphinx.ext.napoleon',
     'sphinx.ext.todo',
     'sphinx.ext.viewcode',
+    'nbsphinx'
 ]
 sphinx_rtd_size_width = "90%"
 
