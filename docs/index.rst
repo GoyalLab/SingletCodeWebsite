@@ -19,8 +19,8 @@ singletCode `(link to preprint) <https://www.biorxiv.org/content/10.1101/2023.08
    doubletDetectionMethods
    datasetsInfo
    packageDocumentation
-   watermelonDatasetVignette
    infoCLI
+   watermelonDatasetVignette
    Contact
    link to paper <https://www.cell.com/cell-genomics/fulltext/S2666-979X(24)00176-9>
    Goyal Lab website <https://www.goyallab.org/>
