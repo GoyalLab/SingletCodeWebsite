@@ -19,6 +19,7 @@ singletCode `(link to preprint) <https://www.biorxiv.org/content/10.1101/2023.08
    doubletDetectionMethods
    datasetsInfo
    packageDocumentation
+   watermelonDatasetVignette.ipynb
    infoCLI
    Contact
    references
