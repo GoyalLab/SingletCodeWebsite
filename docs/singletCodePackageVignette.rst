@@ -5,7 +5,7 @@ The input needed to run singletCode is a .csv file that contains the
 information about cell ID (added while sequencing), lineage barcode, and
 sample name. Each row should be repeated n times where n is the number
 of UMIs associated with that barcode and cell ID combination. You can
-download a sample input sheet `here <source/dataVignette/singletCodePackageVignetteData.zip>`_. It is a subset of data from
+download a sample input sheet `here <../source/dataVignette/singletCodePackageVignetteData.zip>`_. It is a subset of data from
 Jiang Et al and details about it are described in the singletCode paper
 in detail.
 
