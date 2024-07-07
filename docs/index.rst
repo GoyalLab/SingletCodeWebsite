@@ -22,7 +22,7 @@ singletCode `(link to preprint) <https://www.biorxiv.org/content/10.1101/2023.08
    infoCLI
    Contact
    references
-   link to paper <https://www.biorxiv.org/content/10.1101/2023.08.04.552078v2>
+   link to paper <https://www.cell.com/cell-genomics/fulltext/S2666-979X(24)00176-9>
    Goyal Lab website <https://www.goyallab.org/>
    repositories
 
