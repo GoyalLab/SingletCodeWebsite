@@ -1,4 +1,4 @@
-Vignette for using Watermelon Barcodes with singletCode
+Vignette to use Watermelon Barcodes with singletCode
 ==================================================================================================
 
 This a notebook that will walk you through using watermelon barcode FASTQ files
@@ -7,7 +7,7 @@ using Illumina MiSeq.
 
 All the data for this vignette and the files output from it can be
 downloaded from
-`here <../source/dataVignette/watermelonVignetteData.zip>`__. It
+`here <source/dataVignette/watermelonVignetteData.zip>`_. It
 contains inputFiles and the outputFiles.
 
 First step is to understand the samples present in the FASTQ files.
