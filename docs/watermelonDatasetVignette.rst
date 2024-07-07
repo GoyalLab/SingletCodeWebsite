@@ -19,6 +19,17 @@ sampleName_S1_L001_R1_001.fastq.gz means that the sample name is
 sampleName and sample number is 1. Make sure that both read 1 and read 2
 for each sample are present in the same folder (R1 and R2).
 
+Installing singletCode Command line tool
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To use the singletCode command line tool, clone the repository from
+GitHub. Let the path to the folder you are running this command be
+**Path**
+
+.. code:: ipython3
+
+    !git clone https://github.com/GoyalLab/singletCodeTools
+
 Creating sample sheet for these two samples.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -79,18 +90,6 @@ Creating sample sheet for these two samples.
     </div>
 
 
-
-Installing singletCode Command line tool
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To use the singletCode command line tool, clone the repository from
-GitHub. Let the path to the folder you are running this command be
-**Path**
-
-.. code:: ipython3
-
-    !git clone https://github.com/GoyalLab/singletCodeTools
-
 Running watermelon module 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -147,7 +146,7 @@ cell IDs.
         '-s', f'{p}/inputFiles/sampleSheet.csv',
         '--outputName', 'watermelonBarcodeUmiWith10X.csv',
         '--use10X',
-        '--input10X', 'barcodes.tsv'
+        '--input10X', f'{p}/inputFiles/barcodes.tsv'
     ], capture_output=True, text=True)
     
     # Check if the command was successful
