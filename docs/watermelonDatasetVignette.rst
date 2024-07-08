@@ -8,7 +8,7 @@ using Illumina MiSeq.
 All the data for this vignette and the files output from it can be
 downloaded from
 `here <https://github.com/GoyalLab/SingletCodeWebsite/raw/main/source/dataVignette/watermelonVignetteData.zip>`_. It
-contains inputFiles and the outputFiles.
+contains inputFiles and test output files you can compare to (in outputFiles).
 
 First step is to understand the samples present in the FASTQ files.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -29,6 +29,12 @@ GitHub. Let the path to the folder you are running this command be
 .. code:: ipython3
 
     !git clone https://github.com/GoyalLab/singletCodeTools
+
+You also need other packages to run the command line tool. You can install it via conda or pip.
+
+.. code:: ipython3
+
+    !conda install scipy tdqm matplotlib biopython python-levenshtein
 
 Creating sample sheet for these two samples.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
