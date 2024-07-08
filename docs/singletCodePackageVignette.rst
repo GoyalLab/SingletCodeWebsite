@@ -7,7 +7,7 @@ sample name. Each row should be repeated n times where n is the number
 of UMIs associated with that barcode and cell ID combination. You can
 download a sample input sheet `here <https://github.com/GoyalLab/SingletCodeWebsite/raw/main/source/dataVignette/singletCodePackageVignetteData.zip>`_. It is a subset of data from
 Jiang Et al and details about it are described in the singletCode paper
-in detail.
+in detail. This folder contains the input sheet (in inpitFiles) along with test output files you can compare to(in outputFiles).
 
 Install singletCode package
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -26,10 +26,13 @@ Import necessary functions from it
 Read in input sheet
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Let path to the downloaded and unzipper folder be **path**. 
+
 .. code:: ipython3
 
     import pandas as pd
-    pathToInputSheet = "path/to/input/sheet/downloaded"
+    path = "path/to/downloaded/and/unzipped/folder"
+    pathToInputSheet = f"{path}/inputFiles/JiangEtAlSubset_InputFiles.csv"
     df = pd.read_csv(pathToInputSheet)
 
 Check formatting of input sheet
@@ -44,7 +47,7 @@ Identify singlets from input sheet
 
 .. code:: ipython3
 
-    outputPath = "path/to/output/folder"
+    outputPath = f"{path}/outputFiles/"
     cellLabelList, stats = get_singlets(df, dataset_name= "JiangEtAlSubset", save_all_singlet_categories = True, output_path=outputPath)
 
 
