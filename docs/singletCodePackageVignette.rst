@@ -7,7 +7,7 @@ sample name. Each row should be repeated n times where n is the number
 of UMIs associated with that barcode and cell ID combination. You can
 download a sample input sheet `here <https://github.com/GoyalLab/SingletCodeWebsite/raw/main/source/dataVignette/singletCodePackageVignetteData.zip>`_. It is a subset of data from
 Jiang Et al and details about it are described in the singletCode paper
-in detail. This folder contains the input sheet (in inpitFiles) along with test output files you can compare to(in outputFiles).
+in detail. This folder contains the input sheet (in inputFiles) along with test output files you can compare to(in outputFiles).
 
 Install singletCode package
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
