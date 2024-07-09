@@ -9,6 +9,8 @@ download a sample input sheet `here <https://github.com/GoyalLab/SingletCodeWebs
 Jiang Et al and details about it are described in the singletCode paper
 in detail. This folder contains the input sheet (in inputFiles) along with test output files you can compare to(in outputFiles).
 
+A jupyter notebook version of this vignette can be found in the singletCodeTools github "vignette" folder, usingSingletCodePackageVignette.ipynb.
+
 Install singletCode package
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -32,7 +34,7 @@ Let path to the downloaded and unzipper folder be **path**.
 
     import pandas as pd
     path = "path/to/downloaded/and/unzipped/folder"
-    pathToInputSheet = f"{path}/inputFiles/JiangEtAlSubset_InputFiles.csv"
+    pathToInputSheet = f"{path}/inputFiles/JiangEtAlSubset_InputSheet.csv"
     df = pd.read_csv(pathToInputSheet)
 
 Check formatting of input sheet

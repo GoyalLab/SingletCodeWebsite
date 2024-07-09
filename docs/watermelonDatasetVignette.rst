@@ -10,6 +10,8 @@ downloaded from
 `here <https://github.com/GoyalLab/SingletCodeWebsite/raw/main/source/dataVignette/watermelonVignetteData.zip>`_. It
 contains inputFiles and test output files you can compare to (in outputFiles).
 
+A jupyter notebook version of this vignette can be found in the singletCodeTools github "vignette" folder, usingWatermelonBarcodesWithSingletCode.ipynb.
+
 First step is to understand the samples present in the FASTQ files.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -34,7 +36,7 @@ You also need other packages to run the command line tool. You can install it vi
 
 .. code:: ipython3
 
-    !conda install scipy tdqm matplotlib biopython python-levenshtein
+    !conda install scipy tqdm matplotlib biopython python-levenshtein
 
 Creating sample sheet for these two samples.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
