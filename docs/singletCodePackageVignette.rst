@@ -5,14 +5,12 @@ The input needed to run singletCode is a .csv file that contains the
 information about cell ID (added while sequencing), lineage barcode, and
 sample name. Each row should be repeated n times where n is the number
 of UMIs associated with that barcode and cell ID combination. You can
-download a sample input sheet `here <https://github.com/GoyalLab/SingletCodeWebsite/raw/main/source/dataVignette/singletCodePackageVignetteData.zip>`_. It is a subset of data from
+download a sample input sheet `here <>`__. It is a subset of data from
 Jiang Et al and details about it are described in the singletCode paper
-in detail. This folder contains the input sheet (in inputFiles) along with test output files you can compare to(in outputFiles).
-
-A jupyter notebook version of this vignette can be found in the singletCodeTools github "vignette" folder, usingSingletCodePackageVignette.ipynb.
+in detail.
 
 Install singletCode package
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------
 
 .. code:: ipython3
 
@@ -26,31 +24,64 @@ Import necessary functions from it
     from singletCode import check_sample_sheet, get_singlets
 
 Read in input sheet
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Let path to the downloaded and unzipper folder be **path**. 
+-------------------
 
 .. code:: ipython3
 
+    # Read in input sheet
     import pandas as pd
     path = "path/to/downloaded/and/unzipped/folder"
     pathToInputSheet = f"{path}/inputFiles/JiangEtAlSubset_InputSheet.csv"
     df = pd.read_csv(pathToInputSheet)
 
 Check formatting of input sheet
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------------
 
 .. code:: ipython3
 
     check_sample_sheet(df)
 
+
+.. parsed-literal::
+
+    The sample sheet provided can be used as input to get_singlets to get a list of singlets identified.
+
+
 Identify singlets from input sheet
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------------
 
 .. code:: ipython3
 
-    outputPath = f"{path}/outputFiles/"
+    outputPath = "path/to/output/folder"
     cellLabelList, stats = get_singlets(df, dataset_name= "JiangEtAlSubset", save_all_singlet_categories = True, output_path=outputPath)
+
+
+
+.. parsed-literal::
+
+    INFO: Raw data counts: 
+    sample
+    1    1306
+    Name: count, dtype: int64
+    Total cells for sample 1: 39
+    INFO: Using ratio based filtering.
+    Current Sample Adjusted UMI cutoff: 2
+
+
+.. parsed-literal::
+
+    100%|██████████| 122/122 [00:00<00:00, 11177.24it/s]
+
+.. parsed-literal::
+
+    All singlets identified with multiple barcodes are unique? True
+    Total Singlets: 10
+    Total Multiplets: 9
+
+
+.. parsed-literal::
+
+    
 
 
 Saving the stats and the singlet list
@@ -60,8 +91,34 @@ Saving the stats and the singlet list
     stats.to_csv(f"{outputPath}/JiangEtAlSubset_stats.csv")
     cellLabelList[cellLabelList['label'] == "Singlet"].to_csv(f"{outputPath}/JiangEtAlSubset_singletList.csv")
 
+Visualizing the distribution of cells into low UMI, different kinds of
+singlets and undetermined
+
+.. code:: ipython3
+
+    import matplotlib.pyplot as plt
+    #Plotting the distribution of low UMI cells, different kinds of singlets, and undetermined cells.
+    colors = ['#62575b', '#2175a8', '#feb422', '#d62728', '#d4d4d4']  # Example colors, modify as needed
+    plotData = stats.set_index('sample', inplace=False).drop(columns = ['dataset', 'total_cells', "total_singlets"])
+    
+    # Plotting
+    ax = plotData.plot(kind='barh', stacked=True, figsize=(10, 7), color=colors)
+    
+    for p in ax.patches:
+        ax.annotate(f'{int(p.get_width())}', (p.get_x() + p.get_width()/2, p.get_y() + p.get_height()/2), ha='right', va='center')
+    
+    ax.set_xlabel('Total cells')
+    ax.set_title('Distribution of Singlets by Criteria')
+    plt.show()
+
+
+
+
+.. image:: singletCodePackageVignette_files/singletCodePackageVignette_15_0.png
+
+
 Understanding the output files
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------
 
 To understand some of the files in the output, we can look at cell IDs
 and their data in the original input sheet
@@ -319,3 +376,148 @@ initially and then divides.
     </div>
 
 
+
+scRNAseq data
+-------------
+
+Further single-cell RNAseq analysis with both scRNAseq data and singlet
+information from singletCode output
+
+Install and import scanpy for further single-cell RNAseq analysis
+
+.. code:: ipython3
+
+    !pip scanpy[leiden]
+
+.. code:: ipython3
+
+    #Import scanpy
+    import scanpy as sc
+
+Reading the scRNAseq input data in h5ad format
+
+.. code:: ipython3
+
+    #Reading the scRNAseq data in h5ad format
+    adata = sc.read_h5ad(f"{path}/inputFiles/JiangEtAlSubset_scRNAseqData.h5ad")
+    adata
+
+
+
+
+.. parsed-literal::
+
+    AnnData object with n_obs × n_vars = 39 × 36601
+        var: 'gene_ids', 'feature_types'
+
+
+
+| Making copies of singletCode input/output to use them along with
+  scRNAseq data. The -1 is added to cell IDs to match the cell IDs seen
+  in 10x format data.
+| **NOTE**: It may not be needed for your actual data.
+
+.. code:: ipython3
+
+    singleCellDf = df.copy()
+    singleCellDf['cellID'] = singleCellDf['cellID'] + "-1"
+    singleCellDf = singleCellDf.drop_duplicates(subset = 'cellID')
+    cellLabelListSingleCell = cellLabelList.copy()
+    cellLabelListSingleCell['cellID'] = cellLabelListSingleCell['cellID'] + "-1"
+    cellLabelListSingleCell = cellLabelListSingleCell.drop_duplicates(subset='cellID').reset_index(drop = True)
+
+Calculating total counts and genes identified per cell.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**NOTE**: In this vignette we are not doing any actual QC - but in
+actual analysis, it would need to be done.
+
+.. code:: ipython3
+
+    sc.pp.calculate_qc_metrics(adata, inplace=True)
+
+Calculating PCA and plotting variance ratio vs ranking
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: ipython3
+
+    sc.tl.pca(adata)
+    sc.pl.pca_variance_ratio(adata, n_pcs=10)
+
+
+
+.. image:: singletCodePackageVignette_files/singletCodePackageVignette_34_0.png
+
+
+Identifying cells that were thresholded by singletCode as low UMI by
+identifying cells that were in the original list provided to singletCode
+but not labeled as either singlet or undetermined. Then creating a list
+of annotations of singletStatus(singlet, multiplet, low UMI) for all
+cells
+
+.. code:: ipython3
+
+    umiCutoff = pd.DataFrame(
+        singleCellDf.loc[~singleCellDf['cellID'].isin(cellLabelListSingleCell['cellID']), 'cellID']
+        .drop_duplicates()
+        .reset_index(drop=True), 
+        columns=['cellID']
+    )
+    umiCutoff['label'] = "Low UMI"
+
+.. code:: ipython3
+
+    cellIDLabels = cellLabelListSingleCell.drop(columns = ['barcode', 'sample', 'nUMI']).drop_duplicates().reset_index(drop = True)
+
+.. code:: ipython3
+
+    #Creating a list of cell IDs with annotation of whether singlet, multiplet or low UMI.
+    labelID = pd.concat([umiCutoff, cellIDLabels]).reset_index(drop=True)
+    labelID = labelID.set_index(labelID['cellID']).drop(columns = ['cellID'])
+    #Adding the labels to cells in the adata to visualise it
+    adata.obs["singletStatus"] = labelID
+
+Visualising the cells in PCA space
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: ipython3
+
+    sc.pl.pca(
+        adata,
+        color = ['n_genes_by_counts', 'total_counts', 'singletStatus'],
+        size = 250
+    )
+
+
+
+.. image:: singletCodePackageVignette_files/singletCodePackageVignette_40_0.png
+
+
+Calculating neigbours and UMAP for further visualisation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: ipython3
+
+    sc.pp.neighbors(adata)
+    sc.tl.umap(adata)
+
+.. code:: ipython3
+
+    sc.pl.umap(
+        adata,
+        color=['singletStatus'],
+        # Setting a smaller point size to get prevent overlap
+        size=250,
+    )
+
+
+
+.. image:: singletCodePackageVignette_files/singletCodePackageVignette_43_0.png
+
+
+Saving the AnnData
+~~~~~~~~~~~~~~~~~~
+
+.. code:: ipython3
+
+    adata.write(f"{outputPath}/JiangEtAlSubset_test.h5ad")
