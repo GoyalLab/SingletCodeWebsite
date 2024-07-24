@@ -7,7 +7,7 @@ sample name. Each row should be repeated n times where n is the number
 of UMIs associated with that barcode and cell ID combination. You can
 download a sample input sheet `here <https://github.com/GoyalLab/SingletCodeWebsite/raw/main/source/dataVignette/singletCodePackageVignetteData.zip>`_. It is a subset of data from
 Jiang Et al and details about it are described in the singletCode paper
-in detail.  This vignette can be downloaded as a jupyter notebook from the `singletCode Tools repo <https://github.com/GoyalLab/singletCodeTools/tree/main/vignette>`_.
+in detail. The folder also contains expected output files in the test folder within the outputFiles folder. This vignette can be downloaded as a jupyter notebook from the `singletCode Tools repo <https://github.com/GoyalLab/singletCodeTools/tree/main/vignette>`_.
 
 Install singletCode package
 ---------------------------
@@ -116,6 +116,7 @@ singlets and undetermined
 
 .. image:: singletCodePackageVignette_files/singletCodePackageVignette_15_0.png
 
+The above plot shows that the data we had contained different kind of singlets: 6 single-barcode cells, 2 cells which had more than one barcode but with same combination being present in more than one cell, 2 cells that had one dominant barcode. The data also contained 9 cells which singletCode could not determine as being truly singlets and 20 cells whose barcode UMI counts were below the set threshold.
 
 Understanding the output files
 ------------------------------
@@ -520,4 +521,4 @@ Saving the AnnData
 
 .. code:: ipython3
 
-    adata.write(f"{outputPath}/JiangEtAlSubset_test.h5ad")
+    adata.write(f"{outputPath}/JiangEtAlSubset.h5ad")
