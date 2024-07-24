@@ -4,9 +4,9 @@ Vignette to use singletCode Command Line tool to analyse single-cell data with w
 The barcode region is assumed to be amplified using Illumina MiSeq.
 
 All the data for this vignette and the files output from it can be
-downloaded from
+downloaded
 `here <https://github.com/GoyalLab/SingletCodeWebsite/raw/main/source/dataVignette/watermelonVignetteData.zip>`__. It
-contains inputFiles and the outputFiles. This vignette can be downloaded as a jupyter notebook from the `singletCode Tools repo <https://github.com/GoyalLab/singletCodeTools/tree/main/vignette>`_.
+contains inputFiles and the outputFiles (it contains a test folder which has the expected output files). This vignette can be downloaded as a jupyter notebook from the `singletCode Tools repo <https://github.com/GoyalLab/singletCodeTools/tree/main/vignette>`_.
 
 First step is to understand the samples present in the FASTQ files.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -17,16 +17,19 @@ sampleName_S1_L001_R1_001.fastq.gz means that the sample name is
 sampleName and sample number is 1.Make sure that both read 1 and read 2
 for each sample are present in the same folder (R1 and R2)
 
-Creating sample sheet for these two samples.
+Creating sample sheet for these two samples. 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Along with this, we will also install all the packages needed to run this notebook. 
 
 .. code:: ipython3
 
+    %conda install scipy tqdm matplotlib biopython python-levenshtein pandas
     import pandas as pd
 
 .. code:: ipython3
 
-    p = "/home/keerthana/Goyal_Lab/websiteToolData/thingsToAddToWebsite/watermelonVignetteData"
+    p = "path/to/downloaded/and/unzipped/data"
 
 .. code:: ipython3
 
@@ -75,19 +78,20 @@ Creating sample sheet for these two samples.
     </table>
     </div>
 
+    <div style="margin-top: 20px;"></div>
 
 
 Installing singletCode Command line tool
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To use the singletCode command line tool, clone the repository from
-GitHub. Let the path to the folder you are running this command be
+GitHub. Let the Path to the folder you are running this command be
 **Path**
 
 .. code:: ipython3
 
     !git clone https://github.com/GoyalLab/singletCodeTools
-    Path = "/home/keerthana/Goyal_Lab/websiteToolData/singletCodeTools"
+    Path = "path/to/singletCodeTools/repo"
 
 Now, to run the watermelon module of singletCodeTools, you need to run
 this command. If we are going by the folder structure of the zipped file
@@ -297,6 +301,7 @@ sampleName
 
 .. image:: watermelonDatasetVignette_files/watermelonDatasetVignette_20_0.png
 
+In the above plot, you see that the original data had 569 cells that were removed due to low barcode UMI count, 43 singlets with a single-barcode associated with them and a single multiplet (singletCode could not determine if it was a singlet for sure.)
 
 Looking at the scRNAseq data associated
 ---------------------------------------
@@ -309,10 +314,11 @@ Installing and importing scanpy package to do this
 .. code:: ipython3
 
     #Install scanpy for further single-cell RNAseq analysis
-    # !pip scanpy[leiden]
+    # %conda install -c conda-forge scanpy python-igraph leidenalg
     #Import scanpy
     import scanpy as sc
 
+In case there are version conflicts during this installation or while importing scanpy, we found *%conda update --all* to be an useful command that fixed the version conflict previously.
 Reading in the 10X h5ad object associated with the same watermelon data
 
 .. code:: ipython3
