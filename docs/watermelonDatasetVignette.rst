@@ -1,12 +1,12 @@
-Notebook to use singletCode Command Line tool to analyse single-cell data with watermelon barcodes
+Vignette to use singletCode Command Line tool to analyse single-cell data with watermelon barcodes
 ==================================================================================================
 
 The barcode region is assumed to be amplified using Illumina MiSeq.
 
 All the data for this vignette and the files output from it can be
 downloaded from
-`here <../source/dataVignette/watermelonVignetteData.zip>`__. It
-contains inputFiles and the outputFiles.
+`here <https://github.com/GoyalLab/SingletCodeWebsite/blob/main/source/dataVignette/watermelonVignetteData.zip>`__. It
+contains inputFiles and the outputFiles. This vignette can be downloaded as a jupyter notebook from the `singletCode Tools repo <https://github.com/GoyalLab/singletCodeTools/tree/main/vignette>`_.
 
 First step is to understand the samples present in the FASTQ files.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
