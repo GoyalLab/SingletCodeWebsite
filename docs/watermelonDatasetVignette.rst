@@ -8,7 +8,21 @@ downloaded
 `here <https://github.com/GoyalLab/SingletCodeWebsite/raw/main/source/dataVignette/watermelonVignetteData.zip>`__. It
 contains inputFiles and the outputFiles (it contains a test folder which has the expected output files). This vignette can be downloaded as a jupyter notebook from the `singletCode Tools repo <https://github.com/GoyalLab/singletCodeTools/tree/main/vignette>`_.
 
-First step is to understand the samples present in the FASTQ files.
+Installing singletCode Command line tool
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To use the singletCode command line tool, clone the repository from
+GitHub. Let the Path to the folder you are running this command be
+**Path**. We can also install other packages needed to run the tool.
+
+.. code:: ipython3
+
+    !git clone https://github.com/GoyalLab/singletCodeTools
+    Path = "path/to/singletCodeTools/repo"
+    %conda install scipy tqdm matplotlib biopython python-levenshtein pandas
+
+
+Next step is to understand the samples present in the FASTQ files.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The sample fastq files are in the inputFolder. We can identify the
@@ -20,11 +34,8 @@ for each sample are present in the same folder (R1 and R2)
 Creating sample sheet for these two samples. 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Along with this, we will also install all the packages needed to run this notebook. 
-
 .. code:: ipython3
 
-    %conda install scipy tqdm matplotlib biopython python-levenshtein pandas
     import pandas as pd
 
 .. code:: ipython3
@@ -79,19 +90,6 @@ Along with this, we will also install all the packages needed to run this notebo
     </div>
 
     <div style="margin-top: 20px;"></div>
-
-
-Installing singletCode Command line tool
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To use the singletCode command line tool, clone the repository from
-GitHub. Let the Path to the folder you are running this command be
-**Path**
-
-.. code:: ipython3
-
-    !git clone https://github.com/GoyalLab/singletCodeTools
-    Path = "path/to/singletCodeTools/repo"
 
 Now, to run the watermelon module of singletCodeTools, you need to run
 this command. If we are going by the folder structure of the zipped file
