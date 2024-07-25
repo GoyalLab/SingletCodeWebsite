@@ -1,15 +1,27 @@
-Vignette to use singletCode Command Line tool to analyse single-cell data with watermelon barcodes
-==================================================================================================
+.. math::
+
+
+   \def\CC{\bf C}
+   \def\QQ{\bf Q}
+   \def\RR{\bf R}
+   \def\ZZ{\bf Z}
+   \def\NN{\bf N}
+
+# Vignette to use singletCode Command Line tool to analyse single-cell
+data with watermelon barcodes
 
 The barcode region is assumed to be amplified using Illumina MiSeq.
 
 All the data for this vignette and the files output from it can be
 downloaded
-`here <https://github.com/GoyalLab/SingletCodeWebsite/raw/main/source/dataVignette/watermelonVignetteData.zip>`__. It
-contains inputFiles and the outputFiles (it contains a test folder which has the expected output files). This vignette can be downloaded as a jupyter notebook from the `singletCode Tools repo <https://github.com/GoyalLab/singletCodeTools/tree/main/vignette>`_.
+`here <https://github.com/GoyalLab/SingletCodeWebsite/raw/main/source/dataVignette/watermelonVignetteData.zip>`__.
+It contains inputFiles and the outputFiles (it contains a test folder
+which has the expected output files). This vignette can be downloaded as
+a jupyter notebook from the `singletCode Tools
+repo <https://github.com/GoyalLab/singletCodeTools/tree/main/vignette>`__.
 
 Installing singletCode Command line tool
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------------------
 
 To use the singletCode command line tool, clone the repository from
 GitHub. Let the Path to the folder you are running this command be
@@ -21,9 +33,8 @@ GitHub. Let the Path to the folder you are running this command be
     Path = "path/to/singletCodeTools/repo"
     %conda install scipy tqdm matplotlib biopython python-levenshtein pandas
 
-
 Next step is to understand the samples present in the FASTQ files.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------------------------------------------
 
 The sample fastq files are in the inputFolder. We can identify the
 sample name and number from the FASTQ file. For example,
@@ -31,8 +42,8 @@ sampleName_S1_L001_R1_001.fastq.gz means that the sample name is
 sampleName and sample number is 1.Make sure that both read 1 and read 2
 for each sample are present in the same folder (R1 and R2)
 
-Creating sample sheet for these two samples. 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Creating sample sheet for these two samples.
+--------------------------------------------
 
 .. code:: ipython3
 
@@ -53,6 +64,19 @@ Creating sample sheet for these two samples.
 .. raw:: html
 
     <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
     <table border="1" class="dataframe">
       <thead>
         <tr style="text-align: right;">
@@ -75,6 +99,7 @@ Creating sample sheet for these two samples.
       </tbody>
     </table>
     </div>
+
 
 
 Now, to run the watermelon module of singletCodeTools, you need to run
@@ -101,39 +126,20 @@ p/inputFiles/sampleSheet.csv
     result = subprocess.run(command)
 
 
-
 .. parsed-literal::
 
     Arguments received:
       command: watermelon
-      inputFolder: /home/keerthana/Goyal_Lab/websiteToolData/thingsToAddToWebsite/watermelonVignetteData/inputFiles
-      outputFolder: /home/keerthana/Goyal_Lab/websiteToolData/thingsToAddToWebsite/watermelonVignetteData/outputFiles
-      sampleSheet: /home/keerthana/Goyal_Lab/websiteToolData/thingsToAddToWebsite/watermelonVignetteData/inputFiles/sampleSheet.csv
-      outputName: watermelonBarcodeUmi_Check.csv
+      inputFolder: /home/keerthana/Goyal_Lab/websiteToolData/thingsToAddToWebsite/watermelonVignetteData/watermelonVignetteData/inputFiles
+      outputFolder: /home/keerthana/Goyal_Lab/websiteToolData/thingsToAddToWebsite/watermelonVignetteData/watermelonVignetteData/outputFiles
+      sampleSheet: /home/keerthana/Goyal_Lab/websiteToolData/thingsToAddToWebsite/watermelonVignetteData/watermelonVignetteData/inputFiles/sampleSheet.csv
+      outputName: watermelonBarcodeUmi.csv
       use10X: False
       input10X: None
     All the inputs for the command are valid and will proceed with creating the barcode sheet for all the samples in the sheet.
     Filtered rows of dataframe: 940
     Filtered rows of dataframe: 718
 
-
-**NOTE**
-
-In the current FASTQ file, the pattern for the watermelon barcode is
-GGGCTG(([AT][CG]|[CG][AT]){15})GACGCT.
-
-If this is not true for the barcodes in your data, then you can go to
-*processSampleBarcode* function in
-*Path/commandLine/watermelonUtilityFunctions.py* and change the line
-starting with **pattern =**.
-
-Using 10X list of cell IDs to check that all the cell IDs were also captured in scRNAseq
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-If you want to use a 10X single-cell RNA sequencing of the same set of
-cells to check which barcoded cells are of interest to you, then you can
-add –use10X flag to your command and provide the path to the list of
-cell IDs.
 
 .. code:: ipython3
 
@@ -164,22 +170,17 @@ cell IDs.
     Output:
      Arguments received:
       command: watermelon
-      inputFolder: /home/keerthana/Goyal_Lab/websiteToolData/thingsToAddToWebsite/watermelonVignetteData/inputFiles/
-      outputFolder: /home/keerthana/Goyal_Lab/websiteToolData/thingsToAddToWebsite/watermelonVignetteData/outputFiles/
-      sampleSheet: /home/keerthana/Goyal_Lab/websiteToolData/thingsToAddToWebsite/watermelonVignetteData/inputFiles/sampleSheet.csv
-      outputName: watermelonBarcodeUmiWith10X_Check.csv
+      inputFolder: /home/keerthana/Goyal_Lab/websiteToolData/thingsToAddToWebsite/watermelonVignetteData/watermelonVignetteData/inputFiles/
+      outputFolder: /home/keerthana/Goyal_Lab/websiteToolData/thingsToAddToWebsite/watermelonVignetteData/watermelonVignetteData/outputFiles/
+      sampleSheet: /home/keerthana/Goyal_Lab/websiteToolData/thingsToAddToWebsite/watermelonVignetteData/watermelonVignetteData/inputFiles/sampleSheet.csv
+      outputName: watermelonBarcodeUmiWith10X.csv
       use10X: True
-      input10X: /home/keerthana/Goyal_Lab/websiteToolData/thingsToAddToWebsite/watermelonVignetteData/inputFiles/barcodes.tsv
+      input10X: /home/keerthana/Goyal_Lab/websiteToolData/thingsToAddToWebsite/watermelonVignetteData/watermelonVignetteData/inputFiles/barcodes.tsv
     All the inputs for the command are valid and will proceed with creating the barcode sheet for all the samples in the sheet.
     Filtered rows of dataframe: 791
     Filtered rows of dataframe: 629
     
 
-
-Run singletCode to identify true singlets using the cellID-Barcode-UMI file just created
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Using the count module available in the command line
 
 .. code:: ipython3
 
@@ -208,8 +209,8 @@ Using the count module available in the command line
     Output:
      Arguments received:
       command: count
-      input_file: /home/keerthana/Goyal_Lab/websiteToolData/thingsToAddToWebsite/watermelonVignetteData/outputFiles/watermelonBarcodeUmiWith10X_Check.csv
-      out_prefix: /home/keerthana/Goyal_Lab/websiteToolData/thingsToAddToWebsite/watermelonVignetteData/outputFiles/watermelon
+      input_file: /home/keerthana/Goyal_Lab/websiteToolData/thingsToAddToWebsite/watermelonVignetteData/watermelonVignetteData/outputFiles/watermelonBarcodeUmiWith10X.csv
+      out_prefix: /home/keerthana/Goyal_Lab/websiteToolData/thingsToAddToWebsite/watermelonVignetteData/watermelonVignetteData/outputFiles/watermelon
       umi_cutoff_ratio: 7.5e-06
       umi_diff_threshold: 50
       dominant_threshold: 10
@@ -241,27 +242,6 @@ Using the count module available in the command line
     
 
 
-There different files which are output from this command: 1. different
-kinds of singlets in each of the samples: single_barcode, dominant_umi,
-multi_barcode 2. a combined list of all singlets for a sample:
-singlets_all 3. a csv file containing the statistics of each kind of
-singlet, number of potential multiplets and cells filtered out due to
-low UMI counts of barcodes 4. the list of potential multiplets for each
-of the samples: multiplets
-
-For more explanation on different kinds of singlets seen in the output
-files, you can refer
-`here <https://goyallab.github.io/SingletCodeWebsite/singletCode/>`__
-and for example of data showing this, you can refer to the vignette
-about singletCode package.
-
-Visualising the output
-~~~~~~~~~~~~~~~~~~~~~~
-
-Visualising singletCode output by plotting the distribution of low UMI
-cells, different kinds of singlets, and undetermined cells for sample
-sampleName
-
 .. code:: ipython3
 
     import matplotlib.pyplot as plt
@@ -282,13 +262,16 @@ sampleName
 
 
 
+.. image:: watermelonDatasetVignette_files/watermelonDatasetVignette_10_0.png
 
-.. image:: watermelonDatasetVignette_files/watermelonDatasetVignette_20_0.png
 
-In the above plot, you see that the original data had 569 cells that were removed due to low barcode UMI count, 43 singlets with a single-barcode associated with them and 1 multiplet (singletCode could not determine if it was a singlet for sure.)
+In the above plot, you see that the original data had 569 cells that
+were removed due to low barcode UMI count, 43 singlets with a
+single-barcode associated with them and 1 multiplet (singletCode could
+not determine if it was a singlet for sure.)
 
 Looking at the scRNAseq data associated
----------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Since this data has both scRNAseq and barcodes for the same cells, we
 can analyse them together
@@ -302,8 +285,10 @@ Installing and importing scanpy package to do this
     #Import scanpy
     import scanpy as sc
 
-In case there are version conflicts during this installation or while importing scanpy, we found *%conda update --all* to be an useful command that fixed the version conflict previously.
-Reading in the 10X h5ad object associated with the same watermelon data
+In case there are version conflicts during this installation or while
+importing scanpy, we found *%conda update –all* to be an useful command
+that fixed the version conflict previously. Reading in the 10X h5ad
+object associated with the same watermelon data
 
 .. code:: ipython3
 
@@ -320,7 +305,7 @@ Reading in the 10X h5ad object associated with the same watermelon data
 
 
 Read in the output files to identify cells as being singlets, multiplets or being removed for low barcode UMI threshold
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------------------------------------------------------------------------------------------------
 
 First, reading in the cellID-barcode-UMI sheet generated earlier with
 additional filter using scRNAseq data
@@ -348,11 +333,9 @@ filtered out by singletCode
     lowUmiCells = cellidBarcodeUMI[~(cellidBarcodeUMI['cellID'].isin(sampleNameSinglets[0]) | 
                                      cellidBarcodeUMI['cellID'].isin(otherSampleNameSinglets[0]) | 
                                      cellidBarcodeUMI['cellID'].isin(sampleNameMultiplets[0]))]
-    
-
 
 Annotating the cells in adata with these labels
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------------------------
 
 .. code:: ipython3
 
@@ -367,11 +350,10 @@ actual analysis, it would need to be done.
 
 .. code:: ipython3
 
-    
     sc.pp.calculate_qc_metrics(adata, inplace=True)
 
 Calculating PCA and UMAP for visualization
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------------------
 
 .. code:: ipython3
 
@@ -381,7 +363,7 @@ Calculating PCA and UMAP for visualization
 
 
 
-.. image:: watermelonDatasetVignette_files/watermelonDatasetVignette_38_0.png
+.. image:: watermelonDatasetVignette_files/watermelonDatasetVignette_26_0.png
 
 
 .. code:: ipython3
@@ -394,30 +376,30 @@ Calculating PCA and UMAP for visualization
 
 
 
-.. image:: watermelonDatasetVignette_files/watermelonDatasetVignette_39_0.png
+.. image:: watermelonDatasetVignette_files/watermelonDatasetVignette_27_0.png
 
 
 .. code:: ipython3
 
     #Calculating neighbours and UMAP from that for further visualization
     sc.pp.neighbors(adata)
-    sc.tl.umap(adata)
+    sc.tl.umap(adata,random_state = 101010)
 
 .. code:: ipython3
 
     sc.pl.umap(
         adata,
         color=['singletStatus'],
-        size=60,
+        size=60
     )
 
 
 
-.. image:: watermelonDatasetVignette_files/watermelonDatasetVignette_41_0.png
+.. image:: watermelonDatasetVignette_files/watermelonDatasetVignette_29_0.png
 
 
 Saving the final adata
-~~~~~~~~~~~~~~~~~~~~~~
+----------------------
 
 .. code:: ipython3
 

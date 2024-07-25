@@ -1,13 +1,26 @@
-Vignette to use singletCode package
-===================================
+.. math::
+
+
+   \def\CC{\bf C}
+   \def\QQ{\bf Q}
+   \def\RR{\bf R}
+   \def\ZZ{\bf Z}
+   \def\NN{\bf N}
+
+# Vignette to use singletCode package
 
 The input needed to run singletCode is a .csv file that contains the
 information about cell ID (added while sequencing), lineage barcode, and
 sample name. Each row should be repeated n times where n is the number
 of UMIs associated with that barcode and cell ID combination. You can
-download a sample input sheet `here <https://github.com/GoyalLab/SingletCodeWebsite/raw/main/source/dataVignette/singletCodePackageVignetteData.zip>`_. It is a subset of data from
-Jiang Et al and details about it are described in the singletCode paper
-in detail. The folder also contains expected output files in the test folder within the outputFiles folder. This vignette can be downloaded as a jupyter notebook from the `singletCode Tools repo <https://github.com/GoyalLab/singletCodeTools/tree/main/vignette>`_.
+download a sample input sheet
+`here <https://github.com/GoyalLab/SingletCodeWebsite/raw/main/source/dataVignette/singletCodePackageVignetteData.zip>`__.
+It is a subset of data from Jiang Et al and details about it are
+described in the singletCode paper in detail. The folder also contains
+expected output files in the test folder within the outputFiles folder.
+This vignette can be downloaded as a jupyter notebook from the
+`singletCode Tools
+repo <https://github.com/GoyalLab/singletCodeTools/tree/main/vignette>`__.
 
 Install singletCode package
 ---------------------------
@@ -15,7 +28,6 @@ Install singletCode package
 .. code:: ipython3
 
     !pip3 install singletCode
-
 
 Import necessary functions from it
 
@@ -47,6 +59,9 @@ Check formatting of input sheet
     The sample sheet provided can be used as input to get_singlets to get a list of singlets identified.
 
 
+The sample sheet provided can be used as input to get_singlets to get a
+list of singlets identified.
+
 Identify singlets from input sheet
 ----------------------------------
 
@@ -54,7 +69,6 @@ Identify singlets from input sheet
 
     outputPath = "path/to/output/folder"
     cellLabelList, stats = get_singlets(df, dataset_name= "JiangEtAlSubset", save_all_singlet_categories = True, output_path=outputPath)
-
 
 
 .. parsed-literal::
@@ -70,7 +84,7 @@ Identify singlets from input sheet
 
 .. parsed-literal::
 
-    100%|██████████| 122/122 [00:00<00:00, 11177.24it/s]
+    100%|██████████| 122/122 [00:00<00:00, 11475.27it/s]
 
 .. parsed-literal::
 
@@ -83,8 +97,6 @@ Identify singlets from input sheet
 
     
 
-
-Saving the stats and the singlet list
 
 .. code:: ipython3
 
@@ -113,10 +125,15 @@ singlets and undetermined
 
 
 
+.. image:: singletCodePackageVignette_files/singletCodePackageVignette_12_0.png
 
-.. image:: singletCodePackageVignette_files/singletCodePackageVignette_15_0.png
 
-The above plot shows that the data we had contained different kind of singlets: 6 single-barcode cells, 2 cells which had more than one barcode but with same combination being present in more than one cell, 2 cells that had one dominant barcode. The data also contained 9 cells which singletCode could not determine as being truly singlets and 20 cells whose barcode UMI counts were below the set threshold.
+The above plot shows that the data we had contained different kind of
+singlets: 6 single-barcode cells, 2 cells which had more than one
+barcode but with same combination being present in more than one cell, 2
+cells that had one dominant barcode. The data also contained 9 cells
+which singletCode could not determine as being truly singlets and 20
+cells whose barcode UMI counts were below the set threshold.
 
 Understanding the output files
 ------------------------------
@@ -300,75 +317,14 @@ initially and then divides.
         <tr>
           <th>0</th>
           <td>AGGCTGCTCTTTCCGG</td>
-          <td>ATAGGAGTAGTTGGTGATGGTCTACCAGAAGGTGAAGGTGGAGAAGTTGG</td>
+          <td>ATAGGAGTAGTTGGTGATGGTCTACCAGAAGGTGAAGGTGGAGAAG...</td>
           <td>1</td>
           <td>13</td>
         </tr>
         <tr>
           <th>1</th>
           <td>AGGCTGCTCTTTCCGG</td>
-          <td>ATTGAACGTGGAGTTGAACTTGTACTACGAGTACGTCTAGAACATGAACC</td>
-          <td>1</td>
-          <td>2</td>
-        </tr>
-      </tbody>
-    </table>
-    </div>
-
-
-
-.. code:: ipython3
-
-    (df[df['cellID'] == 'GAGGGATGTAACATCC']
-     .groupby(['cellID', 'barcode', 'sample'])
-     .size()
-     .reset_index(name='count')
-     .sort_values('count', ascending=False)
-     .query('count >= 2')
-     .reset_index(drop=True)
-    )
-
-
-
-
-.. raw:: html
-
-    <div>
-    <style scoped>
-        .dataframe tbody tr th:only-of-type {
-            vertical-align: middle;
-        }
-    
-        .dataframe tbody tr th {
-            vertical-align: top;
-        }
-    
-        .dataframe thead th {
-            text-align: right;
-        }
-    </style>
-    <table border="1" class="dataframe">
-      <thead>
-        <tr style="text-align: right;">
-          <th></th>
-          <th>cellID</th>
-          <th>barcode</th>
-          <th>sample</th>
-          <th>count</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th>0</th>
-          <td>GAGGGATGTAACATCC</td>
-          <td>ATAGGAGTAGTTGGTGATGGTCTACCAGAAGGTGAAGGTGGAGAAGTTGG</td>
-          <td>1</td>
-          <td>12</td>
-        </tr>
-        <tr>
-          <th>1</th>
-          <td>GAGGGATGTAACATCC</td>
-          <td>ATTGAACGTGGAGTTGAACTTGTACTACGAGTACGTCTAGAACATGAACC</td>
+          <td>ATTGAACGTGGAGTTGAACTTGTACTACGAGTACGTCTAGAACATG...</td>
           <td>1</td>
           <td>2</td>
         </tr>
@@ -447,7 +403,7 @@ Calculating PCA and plotting variance ratio vs ranking
 
 
 
-.. image:: singletCodePackageVignette_files/singletCodePackageVignette_34_0.png
+.. image:: singletCodePackageVignette_files/singletCodePackageVignette_28_0.png
 
 
 Identifying cells that were thresholded by singletCode as low UMI by
@@ -491,7 +447,7 @@ Visualising the cells in PCA space
 
 
 
-.. image:: singletCodePackageVignette_files/singletCodePackageVignette_40_0.png
+.. image:: singletCodePackageVignette_files/singletCodePackageVignette_34_0.png
 
 
 Calculating neigbours and UMAP for further visualisation
@@ -500,7 +456,7 @@ Calculating neigbours and UMAP for further visualisation
 .. code:: ipython3
 
     sc.pp.neighbors(adata)
-    sc.tl.umap(adata)
+    sc.tl.umap(adata, random_state=101010)
 
 .. code:: ipython3
 
@@ -513,7 +469,7 @@ Calculating neigbours and UMAP for further visualisation
 
 
 
-.. image:: singletCodePackageVignette_files/singletCodePackageVignette_43_0.png
+.. image:: singletCodePackageVignette_files/singletCodePackageVignette_37_0.png
 
 
 Saving the AnnData
