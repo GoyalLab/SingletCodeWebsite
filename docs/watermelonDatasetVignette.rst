@@ -421,4 +421,4 @@ Saving the final adata
 
 .. code:: ipython3
 
-    adata.write(f"{p}/outputFiles/watermelonScRNA_check.h5ad")
+    adata.write(f"{p}/outputFiles/watermelonScRNA.h5ad")
