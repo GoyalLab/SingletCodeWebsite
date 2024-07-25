@@ -53,19 +53,6 @@ Creating sample sheet for these two samples.
 .. raw:: html
 
     <div>
-    <style scoped>
-        .dataframe tbody tr th:only-of-type {
-            vertical-align: middle;
-        }
-    
-        .dataframe tbody tr th {
-            vertical-align: top;
-        }
-    
-        .dataframe thead th {
-            text-align: right;
-        }
-    </style>
     <table border="1" class="dataframe">
       <thead>
         <tr style="text-align: right;">
@@ -89,7 +76,6 @@ Creating sample sheet for these two samples.
     </table>
     </div>
 
-    <div style="margin-top: 20px;"></div>
 
 Now, to run the watermelon module of singletCodeTools, you need to run
 this command. If we are going by the folder structure of the zipped file
@@ -416,13 +402,6 @@ Calculating PCA and UMAP for visualization
     #Calculating neighbours and UMAP from that for further visualization
     sc.pp.neighbors(adata)
     sc.tl.umap(adata)
-
-
-.. parsed-literal::
-
-    /home/keerthana/miniconda3/envs/singletCodePackage/lib/python3.9/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
-      from .autonotebook import tqdm as notebook_tqdm
-
 
 .. code:: ipython3
 
