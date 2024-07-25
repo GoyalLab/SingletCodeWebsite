@@ -1,14 +1,6 @@
-.. math::
-
-
-   \def\CC{\bf C}
-   \def\QQ{\bf Q}
-   \def\RR{\bf R}
-   \def\ZZ{\bf Z}
-   \def\NN{\bf N}
-
-# Vignette to use singletCode package
-
+=======================================
+Vignette to use singletCode package
+=======================================
 The input needed to run singletCode is a .csv file that contains the
 information about cell ID (added while sequencing), lineage barcode, and
 sample name. Each row should be repeated n times where n is the number

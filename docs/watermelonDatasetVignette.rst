@@ -1,14 +1,6 @@
-.. math::
-
-
-   \def\CC{\bf C}
-   \def\QQ{\bf Q}
-   \def\RR{\bf R}
-   \def\ZZ{\bf Z}
-   \def\NN{\bf N}
-
-# Vignette to use singletCode Command Line tool to analyse single-cell
-data with watermelon barcodes
+==========================================================================================================================================
+Vignette to use singletCode Command Line tool to analyse single-cell data with watermelon barcodes
+==========================================================================================================================================
 
 The barcode region is assumed to be amplified using Illumina MiSeq.
 
@@ -21,7 +13,7 @@ a jupyter notebook from the `singletCode Tools
 repo <https://github.com/GoyalLab/singletCodeTools/tree/main/vignette>`__.
 
 Installing singletCode Command line tool
-----------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To use the singletCode command line tool, clone the repository from
 GitHub. Let the Path to the folder you are running this command be
@@ -34,7 +26,8 @@ GitHub. Let the Path to the folder you are running this command be
     %conda install scipy tqdm matplotlib biopython python-levenshtein pandas
 
 Next step is to understand the samples present in the FASTQ files.
-------------------------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 The sample fastq files are in the inputFolder. We can identify the
 sample name and number from the FASTQ file. For example,
@@ -43,7 +36,7 @@ sampleName and sample number is 1.Make sure that both read 1 and read 2
 for each sample are present in the same folder (R1 and R2)
 
 Creating sample sheet for these two samples.
---------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: ipython3
 
@@ -305,7 +298,7 @@ object associated with the same watermelon data
 
 
 Read in the output files to identify cells as being singlets, multiplets or being removed for low barcode UMI threshold
------------------------------------------------------------------------------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 First, reading in the cellID-barcode-UMI sheet generated earlier with
 additional filter using scRNAseq data
@@ -335,7 +328,7 @@ filtered out by singletCode
                                      cellidBarcodeUMI['cellID'].isin(sampleNameMultiplets[0]))]
 
 Annotating the cells in adata with these labels
------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: ipython3
 
@@ -353,7 +346,7 @@ actual analysis, it would need to be done.
     sc.pp.calculate_qc_metrics(adata, inplace=True)
 
 Calculating PCA and UMAP for visualization
-------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: ipython3
 
@@ -399,7 +392,7 @@ Calculating PCA and UMAP for visualization
 
 
 Saving the final adata
-----------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: ipython3
 
