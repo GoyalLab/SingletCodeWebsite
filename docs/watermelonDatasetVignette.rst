@@ -285,7 +285,7 @@ sampleName
 
 .. image:: watermelonDatasetVignette_files/watermelonDatasetVignette_20_0.png
 
-In the above plot, you see that the original data had 569 cells that were removed due to low barcode UMI count, 43 singlets with a single-barcode associated with them and a single multiplet (singletCode could not determine if it was a singlet for sure.)
+In the above plot, you see that the original data had 569 cells that were removed due to low barcode UMI count, 43 singlets with a single-barcode associated with them and 1 multiplet (singletCode could not determine if it was a singlet for sure.)
 
 Looking at the scRNAseq data associated
 ---------------------------------------
