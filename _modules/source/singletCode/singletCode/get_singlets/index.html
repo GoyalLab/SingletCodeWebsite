@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>source.singletCode.singletCode.get_singlets &mdash; singletCode 1.2 documentation</title>
+      <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/sphinx_rtd_size.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/colour.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/sphinx_highlight.js"></script>
+        <script type="text/javascript">document.addEventListener('DOMContentLoaded', function() {document.querySelectorAll('a.reference.external').forEach(function(a) {a.setAttribute('target', '_blank'); a.setAttribute('rel', 'noopener noreferrer');});});</script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex/" />
+    <link rel="search" title="Search" href="../../../../../search/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../../" class="icon icon-home">
+            singletCode
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doubletInformation/">doublets in sequencing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../singletCode/">what is singletCode?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../classifier/">classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../usageInformation/">implementing singletCode on your data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doubletDetectionMethods/">benchmarking doublet detection methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../datasetsInfo/">dataset information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../packageDocumentation/">singletCode PyPI package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../infoCLI/">command line interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../watermelonDatasetVignette/">Vignette to use singletCode Command Line tool to analyse single-cell data with watermelon barcodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../singletCodePackageVignette/">Vignette to use singletCode package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../Contact/">questions? contact us!</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.cell.com/cell-genomics/fulltext/S2666-979X(24)00176-9">link to paper</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.goyallab.org/">Goyal Lab website</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../repositories/">repositories</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../">singletCode</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../../">Module code</a></li>
+      <li class="breadcrumb-item active">source.singletCode.singletCode.get_singlets</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for source.singletCode.singletCode.get_singlets</h1><div class="highlight"><pre>
+<span></span><span class="c1">#Module which has the the main functions</span>
+<span class="kn">from</span> <span class="nn">.count_doublets_utils_copy</span> <span class="kn">import</span> <span class="n">count_doublets</span>
+
+<div class="viewcode-block" id="get_singlets"><a class="viewcode-back" href="../../../../../packageDocumentation/#source.singletCode.singletCode.get_singlets">[docs]</a><span class="k">def</span> <span class="nf">get_singlets</span><span class="p">(</span><span class="n">sample_sheet</span><span class="p">,</span> <span class="n">output_path</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">dataset_name</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                <span class="n">save_all_singlet_categories</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">save_plot_umi</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> 
+                <span class="n">umi_cutoff_method</span> <span class="o">=</span> <span class="s2">&quot;ratio&quot;</span><span class="p">,</span> <span class="n">umi_cutoff_ratio</span> <span class="o">=</span> <span class="mi">3</span><span class="o">/</span><span class="mf">4e5</span><span class="p">,</span> 
+                <span class="n">umi_cutoff_percentile</span><span class="o">=</span> <span class="kc">None</span><span class="p">,</span>  <span class="n">min_umi_cutoff</span> <span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">umi_diff_threshold</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
+                <span class="n">umi_dominant_threshold</span> <span class="o">=</span> <span class="mi">10</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function that inputs the sample sheet and other parameters and runs it through count_doublets to get a list of </span>
+<span class="sd">    singlets in the sample. If a row is repeated, it is assumed to reflect the UMI associated with a barcode in </span>
+<span class="sd">    this cell (identified by the cellID).</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        sample_sheet (DataFrame): A dataframe that contains 3 columns: cellID, barcode, sample.</span>
+<span class="sd">        dataset_name (str): The name of the dataset being analysed. It will be in the name of all saved files </span>
+<span class="sd">            and be a column in the singlet_stats sheet returned.</span>
+<span class="sd">        output_path (str, optional): The path to store any output files, including plots to show UMI distribution </span>
+<span class="sd">            and what the umi_cutoff used is, csv files containing singlets of different categories. If None, </span>
+<span class="sd">            then the list of singlets will be returned but it won’t contain information about what category of </span>
+<span class="sd">            singlet each cell is. Defaults to None.</span>
+<span class="sd">        save_all_singlet_categories (bool, optional): If true, then singlets of each category are saved separately </span>
+<span class="sd">            in csv files along with all singlets and all non-singlets. Defaults to False.</span>
+<span class="sd">        save_plot_umi (bool, optional): If true, then plots showing UMI distribution indicating the UMI cutoff used </span>
+<span class="sd">            will be saved for each sample. Defaults to False.</span>
+<span class="sd">        umi_cutoff_method (str, optional): Specify if quality control for barcodes using UMI counts should be based </span>
+<span class="sd">            on &quot;ratio&quot; or &quot;percentile&quot;. Defaults to &#39;ratio&#39;.</span>
+<span class="sd">        umi_cutoff_ratio (float, optional): The ratio used to determine the umi_cutoff if umi_cutoff_method is </span>
+<span class="sd">            &quot;ratio&quot;. Defaults to 3/4e5.</span>
+<span class="sd">        umi_cutoff_percentile (float, optional): If umi_cutoff_method is &quot;percentile&quot;, then the umi_cutoff will be </span>
+<span class="sd">            the minimum UMI count required to be in the top umi_cutoff_percentile&#39;th percentile. There is no default and if umi_cutoff_method is set to &quot;percentile&quot;, then manually set this parameter.</span>
+<span class="sd">        min_umi_cutoff (int, optional): This is the absolute minimum number of UMIs that need to be associated with </span>
+<span class="sd">            a barcode for it to be considered a barcode. However, the actual umi_cutoff used will be the greater </span>
+<span class="sd">            of min_umi_cutoff and the cutoff calculated using umi_cutoff_method. Defaults to 2.</span>
+<span class="sd">        umi_dominant_threshold (int, optional): The minimum UMI count to be associated with a barcode for it to be </span>
+<span class="sd">            considered to be a potential dominant barcode in a cell. Defaults to 10.</span>
+<span class="sd">        umi_diff_threshold (int, optional): This is the minimum difference between UMI counts associated with a </span>
+<span class="sd">            potential dominant barcode present within a cell and the median UMI count of all barcodes associated </span>
+<span class="sd">            with the cell. If a cell has only one dominant barcode, it will be counted. Defaults to 50.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: A 2-tuple containing:</span>
+<span class="sd">            - pandas.DataFrame: A dataframe which contains all unique cell ID and barcode combinations in the data along with singlet assignment to each cell ID.</span>
+<span class="sd">            - pandas.DataFrame: A dataframe which contains the statistics for total singlets, different categories of singlets, and cells removed due to low UMI counts.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">singlet_list</span><span class="p">,</span> <span class="n">singlet_stats</span> <span class="o">=</span> <span class="n">count_doublets</span><span class="p">(</span>
+            <span class="n">sample_sheet</span><span class="p">,</span>
+            <span class="n">output_prefix</span><span class="o">=</span><span class="n">output_path</span><span class="p">,</span>
+            <span class="n">save_all_singlet_categories</span> <span class="o">=</span> <span class="n">save_all_singlet_categories</span><span class="p">,</span>
+            <span class="n">save_plot_umi</span> <span class="o">=</span> <span class="n">save_plot_umi</span><span class="p">,</span>
+            <span class="n">umi_cutoff_ratio</span><span class="o">=</span><span class="n">umi_cutoff_ratio</span><span class="p">,</span>
+            <span class="n">umi_cutoff_percentile</span> <span class="o">=</span> <span class="n">umi_cutoff_percentile</span><span class="p">,</span>
+            <span class="n">umi_diff_threshold</span><span class="o">=</span><span class="n">umi_diff_threshold</span><span class="p">,</span>
+            <span class="n">dominant_threshold</span><span class="o">=</span><span class="n">umi_dominant_threshold</span><span class="p">,</span>
+            <span class="n">min_umi_good_data_cutoff</span><span class="o">=</span><span class="n">min_umi_cutoff</span><span class="p">,</span>
+            <span class="n">umi_cutoff_method</span> <span class="o">=</span> <span class="n">umi_cutoff_method</span><span class="p">,</span>
+            <span class="n">dataset_name</span> <span class="o">=</span> <span class="n">dataset_name</span>
+    <span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">singlet_list</span><span class="p">,</span> <span class="n">singlet_stats</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Goyal Lab.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

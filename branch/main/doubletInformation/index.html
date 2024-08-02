@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>doublets in sequencing &mdash; singletCode 1.2 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/sphinx_rtd_size.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/colour.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script type="text/javascript">document.addEventListener('DOMContentLoaded', function() {document.querySelectorAll('a.reference.external').forEach(function(a) {a.setAttribute('target', '_blank'); a.setAttribute('rel', 'noopener noreferrer');});});</script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="what is singletCode?" href="../singletCode/" />
+    <link rel="prev" title="Welcome to the documentation of singletCode!" href="../" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            singletCode
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">doublets in sequencing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#how-do-doublets-form">How do doublets form?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#downstream-impact-of-doublets">Downstream impact of doublets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../singletCode/">what is singletCode?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../classifier/">classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usageInformation/">implementing singletCode on your data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doubletDetectionMethods/">benchmarking doublet detection methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datasetsInfo/">dataset information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../packageDocumentation/">singletCode PyPI package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../infoCLI/">command line interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../watermelonDatasetVignette/">Vignette to use singletCode Command Line tool to analyse single-cell data with watermelon barcodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../singletCodePackageVignette/">Vignette to use singletCode package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Contact/">questions? contact us!</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.cell.com/cell-genomics/fulltext/S2666-979X(24)00176-9">link to paper</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.goyallab.org/">Goyal Lab website</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../repositories/">repositories</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">singletCode</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">doublets in sequencing</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/doubletInformation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="doublets-in-sequencing">
+<h1>doublets in sequencing<a class="headerlink" href="#doublets-in-sequencing" title="Permalink to this heading">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#how-do-doublets-form" id="id4">How do doublets form?</a></p></li>
+<li><p><a class="reference internal" href="#downstream-impact-of-doublets" id="id5">Downstream impact of doublets</a></p></li>
+</ul>
+</div>
+<section id="how-do-doublets-form">
+<h2><a class="toc-backref" href="#id4">How do doublets form?</a><a class="headerlink" href="#how-do-doublets-form" title="Permalink to this heading">¶</a></h2>
+<p>Single-cell RNA sequencing (scRNA-seq) datasets contain true single cells, or singlets, in addition to cells that randomly coalesce during the protocol, or doublets. Sometimes, there are higher rates of doublets which can be attributed to cellular physiology and experimental protocols can lead to cell clumping. Doublet percentage in a sample be as high as 40%. Doublets can be two very transcriptionally different cells captured together (heterotypic) or two transcriptionally similar cells captured together (homotypic). Doublets are difficult to identify because just because two cells are captured together does not mean there is simply more absolute RNA fragments present or sequenced in doublet cases, and cells exist on a transcriptional continuum, making identification of valid singlet cells difficult, especially if cells are in a transitioning or reprogrammed state.</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/Figure1A.png"><img alt="How doublets are generated during sequencing" src="../_images/Figure1A.png" style="width: 562.0px; height: 265.5px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Schematic of how cells with lineage barcodes appear in the single-cell sequencer where droplets add a unique cell ID. The singlet depicted is one reaction droplet with a single cell such that there is a 1:1:1 mapping of a cell to a barcode to a cell ID. Alternatively, an example of a doublet is when one droplet has two or more cells, each having a unique barcode.</em></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="downstream-impact-of-doublets">
+<h2><a class="toc-backref" href="#id5">Downstream impact of doublets</a><a class="headerlink" href="#downstream-impact-of-doublets" title="Permalink to this heading">¶</a></h2>
+<p>Doublets are problematic because they can impact the conclusions of scRNA-seq downstream functional analyses. We found that doublets confound downstream analyses when we tested common downstream scRNA-seq data analysis protocols (differential expression, cell trajectory, clustering stability, and cell-cell communication) on datasets of various doublet percentages. A schematic for how these datasets were generated and examples of our results for differential expression are below.</p>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../_images/Figure5A.png"><img alt="Schematic of datasets generated for all functional analyses. The dataset is first processed to have 40% doublets and undergo standard Seurat processing with Leiden clustering, where cluster labels here are represented in different colors in UMAP space (second box, left), and doublet labels are represented by different shades of blue in UMAP space (second box, right). Then,doublets are removed to achieve 20%, 10% and 0% doublet datasets. The 0%, 10%, 20% and 40% doublet rate datasets are generated for each dataset used in benchmarking except for Smart-seq3 to evaluate doublet impact on various downstream analyses: cell trajectory, cell-cell communication, clustering stability, and differential expression." src="../_images/Figure5A.png" style="width: 309.5px; height: 489.0px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Schematic of datasets generated for all functional analyses. The dataset is first processed to have 40% doublets and undergo standard Seurat processing with Leiden clustering, where cluster labels here are represented in different colors in UMAP space (second box, left), and doublet labels are represented by different shades of blue in UMAP space (second box, right). Then,doublets are removed to achieve 20%, 10% and 0% doublet datasets. The 0%, 10%, 20% and 40% doublet rate datasets are generated for each dataset used in benchmarking except for Smart-seq3 to evaluate doublet impact on various downstream analyses: cell trajectory, cell-cell communication, clustering stability, and differential expression.</em></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<div class="line-block">
+<div class="line"><strong>differential expression</strong></div>
+<div class="line">Differential expression is used to identify the genes that are differentially expressed between cells belonging to different conditions. The genes identified could be used to explain the phenotype observed or examine pathways involved. Our results indicated that increasing doublet rate decreases the precision, recall, and true negative rate (TNR) for the datasets when compared to the differentially expressed genes inferred from the clean singlets-only dataset, with a higher doublet rate leading to worse performance.</div>
+</div>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="../_images/Figure5B.png"><img alt="Differential expression analysis results for all datasets using (blue, right) on two randomly chosen clusters at various doublet rates. Line color shade represents the % doublet rate, with a more saturated color indicative of a higher doublet rate. Precision, recall and TNR are calculated against ground truth differentially expressed genes in the corresponding dataset without doublets. P-values between variable doublet rate datasets are calculated with a paired Wilcoxon signed-rank test." src="../_images/Figure5B.png" style="width: 536.5px; height: 511.0px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Differential expression analysis results for all datasets using MAST (purple, left) and Wilcox (blue, right) on two randomly chosen clusters at various doublet rates. Line color shade represents the % doublet rate, with a more saturated color indicative of a higher doublet rate. Precision, recall and TNR are calculated against ground truth differentially expressed genes in the corresponding dataset without doublets. P-values between variable doublet rate datasets are calculated with a paired Wilcoxon signed-rank test.</em></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<div class="line-block">
+<div class="line"><strong>clustering stability</strong></div>
+<div class="line">Clustering is one of the most common analyses done to infer the identity of similar cells. When the number of doublets were increased, the probability of getting the correct number of cell clusters decreased. This might lead to spurious clusters or a genuine sub-type of cells not being identified as a distinct group. For details about our results, see our paper.</div>
+<div class="line"><br /></div>
+<div class="line"><strong>cell-cell communication</strong></div>
+<div class="line">Cell-cell communication inference can provide information about intercellular communication networks. This can be used to understand the role of cell-cell interactions in biological processes. Increasing the doublet rate decreases the precision and recall for communication pathways identified when compared to the clean singlets only datasets. For details about our results, see our paper.</div>
+<div class="line"><br /></div>
+<div class="line"><strong>cell trajectory</strong></div>
+<div class="line">Increasing doublet rate caused the trajectory to deviate away from the trajectory inferred from the clean singlet-only datasets and there were gain/loss of lineages when doublets were introduced. For details about our results, see our paper.</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../" class="btn btn-neutral float-left" title="Welcome to the documentation of singletCode!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../singletCode/" class="btn btn-neutral float-right" title="what is singletCode?" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Goyal Lab.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

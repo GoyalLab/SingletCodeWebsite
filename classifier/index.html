@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>classifier &mdash; singletCode 1.2 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/sphinx_rtd_size.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/colour.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script type="text/javascript">document.addEventListener('DOMContentLoaded', function() {document.querySelectorAll('a.reference.external').forEach(function(a) {a.setAttribute('target', '_blank'); a.setAttribute('rel', 'noopener noreferrer');});});</script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="implementing singletCode on your data" href="../usageInformation/" />
+    <link rel="prev" title="what is singletCode?" href="../singletCode/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            singletCode
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../doubletInformation/">doublets in sequencing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../singletCode/">what is singletCode?</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">classifier</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#how-was-it-built">How was it built?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-well-does-it-perform">How well does it perform?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#classifying-doublets-in-non-barcoded-datasets">Classifying doublets in non-barcoded datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../usageInformation/">implementing singletCode on your data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doubletDetectionMethods/">benchmarking doublet detection methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datasetsInfo/">dataset information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../packageDocumentation/">singletCode PyPI package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../infoCLI/">command line interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../watermelonDatasetVignette/">Vignette to use singletCode Command Line tool to analyse single-cell data with watermelon barcodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../singletCodePackageVignette/">Vignette to use singletCode package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Contact/">questions? contact us!</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.cell.com/cell-genomics/fulltext/S2666-979X(24)00176-9">link to paper</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.goyallab.org/">Goyal Lab website</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../repositories/">repositories</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">singletCode</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">classifier</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/classifier.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="classifier">
+<h1>classifier<a class="headerlink" href="#classifier" title="Permalink to this heading">¶</a></h1>
+<section id="how-was-it-built">
+<h2>How was it built?<a class="headerlink" href="#how-was-it-built" title="Permalink to this heading">¶</a></h2>
+<p>We used the true singlets identified with singletCode to simulate datasets with 10% doublets and trained an extreme gradient-boosting (XGBoost) classifier to detect these doublets.</p>
+<p>The classifier is built in two steps:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Hyperparameter optimization (using hyperopt()) with a training and validation set.</p></li>
+<li><p>Training the optimal model with a training and test set</p></li>
+</ol>
+</div></blockquote>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/Figure6A.png"><img alt="Schematic of classifier optimization and training. Data was first split into training, validation, and testing sets. The training and validation sets were used to optimize the hyperparameters using the hyperopt library. A search space (blue cube) was defined in high dimensional hyperparameter space and, through Bayesian optimization, the optimal value for each hyperparameter was determined based on maximizing the AUPRC value. Once the model’s parameters were optimized, the final, optimal, classifier was trained using the training and test sets. An extreme gradient boosted (XGBoost) classifier was trained to recognize doublet cells with input data being gene count matrices of datasets made from singlets and 10% simulated doublets." src="../_images/Figure6A.png" style="width: 463.20000000000005px; height: 808.0px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Schematic of classifier optimization and training. Data was first split into training, validation, and testing sets. The training and validation sets were used to optimize the hyperparameters using the hyperopt library. A search space (blue cube) was defined in high dimensional hyperparameter space and, through Bayesian optimization, the optimal value for each hyperparameter was determined based on maximizing the AUPRC value. Once the model’s parameters were optimized, the final, optimal, classifier was trained using the training and test sets. An extreme gradient boosted (XGBoost) classifier was trained to recognize doublet cells with input data being gene count matrices of datasets made from singlets and 10% simulated doublets.</em></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="how-well-does-it-perform">
+<h2>How well does it perform?<a class="headerlink" href="#how-well-does-it-perform" title="Permalink to this heading">¶</a></h2>
+<p>We achieved significantly higher AUPRC and AUROC scores using our classifier compared to the other methods we benchmarked for doublet detection.</p>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../_images/Figure6B.png"><img alt="Results of classifier doublet detection compared to other doublet detection methods as measured by AUPRC. Each dot represents the average AUPRC score of a doublet detection method (color) on a given dataset (x-axis). The ribbon has the width of the standard deviation of the AUPRC score for each doublet detection method." src="../_images/Figure6B.png" style="width: 464.4px; height: 309.3px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Results of classifier doublet detection compared to other doublet detection methods as measured by AUPRC. Each dot represents the average AUPRC score of a doublet detection method (color) on a given dataset (x-axis). The ribbon has the width of the standard deviation of the AUPRC score for each doublet detection method.</em></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="classifying-doublets-in-non-barcoded-datasets">
+<span id="classifier-nonebarcoded"></span><h2>Classifying doublets in non-barcoded datasets<a class="headerlink" href="#classifying-doublets-in-non-barcoded-datasets" title="Permalink to this heading">¶</a></h2>
+<p>Although barcoding experiments are becoming increasingly prevalent, they are still relatively uncommon. Therefore, we sought to train a doublet classifier on barcoded data that could detect doublets in non-barcoded data. We trained a classifier on cell samples from melanoma, mouse brain, leukemia, and bone marrow/leukemia using true singlet labels from singletCode and successfully identified doublets in a similar cell sample without needing barcoding data. Further, we integrated all the data from mouse and human samples together, split it in half, and it to train a classifier that was then tested on individual sample components of the opposite half. This, too, proved to outperform other doublet detection methods.</p>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="../_images/Figure6G.png"><img alt="Schematic of training a doublet classifier on barcoded data from 1 experiment and using that classifier to identify doublets in a biological replicate, experiment 2." src="../_images/Figure6G.png" style="width: 253.0px; height: 329.5px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Schematic of training a doublet classifier on barcoded data from 1 experiment and using that classifier to identify doublets in a biological replicate, experiment 2.</em></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>As barcoded scRNA-seq data becomes more abundant, experimenters can train a classifier specific to their cell type using a barcoded subset of data, and, eventually, there could be enough data to train a classifier on multiple barcoded cell types which can be used more generally.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../singletCode/" class="btn btn-neutral float-left" title="what is singletCode?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../usageInformation/" class="btn btn-neutral float-right" title="implementing singletCode on your data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Goyal Lab.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

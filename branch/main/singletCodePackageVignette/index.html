@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vignette to use singletCode package &mdash; singletCode 1.2 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/sphinx_rtd_size.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/colour.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script type="text/javascript">document.addEventListener('DOMContentLoaded', function() {document.querySelectorAll('a.reference.external').forEach(function(a) {a.setAttribute('target', '_blank'); a.setAttribute('rel', 'noopener noreferrer');});});</script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="questions? contact us!" href="../Contact/" />
+    <link rel="prev" title="Vignette to use singletCode Command Line tool to analyse single-cell data with watermelon barcodes" href="../watermelonDatasetVignette/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            singletCode
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../doubletInformation/">doublets in sequencing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../singletCode/">what is singletCode?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../classifier/">classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usageInformation/">implementing singletCode on your data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doubletDetectionMethods/">benchmarking doublet detection methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datasetsInfo/">dataset information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../packageDocumentation/">singletCode PyPI package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../infoCLI/">command line interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../watermelonDatasetVignette/">Vignette to use singletCode Command Line tool to analyse single-cell data with watermelon barcodes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Vignette to use singletCode package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#install-singletcode-package">Install singletCode package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#read-in-input-sheet">Read in input sheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#check-formatting-of-input-sheet">Check formatting of input sheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#identify-singlets-from-input-sheet">Identify singlets from input sheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#understanding-the-output-files">Understanding the output files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scrnaseq-data">scRNAseq data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#calculating-total-counts-and-genes-identified-per-cell">Calculating total counts and genes identified per cell.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#calculating-pca-and-plotting-variance-ratio-vs-ranking">Calculating PCA and plotting variance ratio vs ranking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#visualising-the-cells-in-pca-space">Visualising the cells in PCA space</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#calculating-neigbours-and-umap-for-further-visualisation">Calculating neigbours and UMAP for further visualisation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#saving-the-anndata">Saving the AnnData</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Contact/">questions? contact us!</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.cell.com/cell-genomics/fulltext/S2666-979X(24)00176-9">link to paper</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.goyallab.org/">Goyal Lab website</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../repositories/">repositories</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">singletCode</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Vignette to use singletCode package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/singletCodePackageVignette.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="vignette-to-use-singletcode-package">
+<h1>Vignette to use singletCode package<a class="headerlink" href="#vignette-to-use-singletcode-package" title="Permalink to this heading">¶</a></h1>
+<p>The input needed to run singletCode is a .csv file that contains the
+information about cell ID (added while sequencing), lineage barcode, and
+sample name. Each row should be repeated n times where n is the number
+of UMIs associated with that barcode and cell ID combination. You can
+download a sample input sheet
+<a class="reference external" href="https://github.com/GoyalLab/SingletCodeWebsite/raw/main/source/dataVignette/singletCodePackageVignetteData.zip">here</a>.
+It is a subset of data from Jiang Et al and details about it are
+described in the singletCode paper in detail. The folder also contains
+expected output files in the test folder within the outputFiles folder.
+This vignette can be downloaded as a jupyter notebook from the
+<a class="reference external" href="https://github.com/GoyalLab/singletCodeTools/tree/main/vignette">singletCode Tools
+repo</a>.</p>
+<section id="install-singletcode-package">
+<h2>Install singletCode package<a class="headerlink" href="#install-singletcode-package" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip3<span class="w"> </span>install<span class="w"> </span>singletCode
+</pre></div>
+</div>
+<p>Import necessary functions from it</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">singletCode</span> <span class="kn">import</span> <span class="n">check_sample_sheet</span><span class="p">,</span> <span class="n">get_singlets</span>
+</pre></div>
+</div>
+</section>
+<section id="read-in-input-sheet">
+<h2>Read in input sheet<a class="headerlink" href="#read-in-input-sheet" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read in input sheet</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;path/to/downloaded/and/unzipped/folder&quot;</span>
+<span class="n">pathToInputSheet</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">/inputFiles/JiangEtAlSubset_InputSheet.csv&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">pathToInputSheet</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="check-formatting-of-input-sheet">
+<h2>Check formatting of input sheet<a class="headerlink" href="#check-formatting-of-input-sheet" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">check_sample_sheet</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">sample</span> <span class="n">sheet</span> <span class="n">provided</span> <span class="n">can</span> <span class="n">be</span> <span class="n">used</span> <span class="k">as</span> <span class="nb">input</span> <span class="n">to</span> <span class="n">get_singlets</span> <span class="n">to</span> <span class="n">get</span> <span class="n">a</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">singlets</span> <span class="n">identified</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>The sample sheet provided can be used as input to get_singlets to get a
+list of singlets identified.</p>
+</section>
+<section id="identify-singlets-from-input-sheet">
+<h2>Identify singlets from input sheet<a class="headerlink" href="#identify-singlets-from-input-sheet" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">outputPath</span> <span class="o">=</span> <span class="s2">&quot;path/to/output/folder&quot;</span>
+<span class="n">cellLabelList</span><span class="p">,</span> <span class="n">stats</span> <span class="o">=</span> <span class="n">get_singlets</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">dataset_name</span><span class="o">=</span> <span class="s2">&quot;JiangEtAlSubset&quot;</span><span class="p">,</span> <span class="n">save_all_singlet_categories</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">output_path</span><span class="o">=</span><span class="n">outputPath</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INFO</span><span class="p">:</span> <span class="n">Raw</span> <span class="n">data</span> <span class="n">counts</span><span class="p">:</span>
+<span class="n">sample</span>
+<span class="mi">1</span>    <span class="mi">1306</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">count</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+<span class="n">Total</span> <span class="n">cells</span> <span class="k">for</span> <span class="n">sample</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">39</span>
+<span class="n">INFO</span><span class="p">:</span> <span class="n">Using</span> <span class="n">ratio</span> <span class="n">based</span> <span class="n">filtering</span><span class="o">.</span>
+<span class="n">Current</span> <span class="n">Sample</span> <span class="n">Adjusted</span> <span class="n">UMI</span> <span class="n">cutoff</span><span class="p">:</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>100%|██████████| 122/122 [00:00&lt;00:00, 11475.27it/s]
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>All singlets identified with multiple barcodes are unique? True
+Total Singlets: 10
+Total Multiplets: 9
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stats</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">outputPath</span><span class="si">}</span><span class="s2">/JiangEtAlSubset_stats.csv&quot;</span><span class="p">)</span>
+<span class="n">cellLabelList</span><span class="p">[</span><span class="n">cellLabelList</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Singlet&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">outputPath</span><span class="si">}</span><span class="s2">/JiangEtAlSubset_singletList.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Visualizing the distribution of cells into low UMI, different kinds of
+singlets and undetermined</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="c1">#Plotting the distribution of low UMI cells, different kinds of singlets, and undetermined cells.</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#62575b&#39;</span><span class="p">,</span> <span class="s1">&#39;#2175a8&#39;</span><span class="p">,</span> <span class="s1">&#39;#feb422&#39;</span><span class="p">,</span> <span class="s1">&#39;#d62728&#39;</span><span class="p">,</span> <span class="s1">&#39;#d4d4d4&#39;</span><span class="p">]</span>  <span class="c1"># Example colors, modify as needed</span>
+<span class="n">plotData</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;sample&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;dataset&#39;</span><span class="p">,</span> <span class="s1">&#39;total_cells&#39;</span><span class="p">,</span> <span class="s2">&quot;total_singlets&quot;</span><span class="p">])</span>
+
+<span class="c1"># Plotting</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plotData</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;barh&#39;</span><span class="p">,</span> <span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">patches</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">get_width</span><span class="p">())</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span> <span class="o">+</span> <span class="n">p</span><span class="o">.</span><span class="n">get_width</span><span class="p">()</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">get_y</span><span class="p">()</span> <span class="o">+</span> <span class="n">p</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Total cells&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribution of Singlets by Criteria&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="../_images/singletCodePackageVignette_12_0.png" src="../_images/singletCodePackageVignette_12_0.png" />
+<p>The above plot shows that the data we had contained different kind of
+singlets: 6 single-barcode cells, 2 cells which had more than one
+barcode but with same combination being present in more than one cell, 2
+cells that had one dominant barcode. The data also contained 9 cells
+which singletCode could not determine as being truly singlets and 20
+cells whose barcode UMI counts were below the set threshold.</p>
+</section>
+<section id="understanding-the-output-files">
+<h2>Understanding the output files<a class="headerlink" href="#understanding-the-output-files" title="Permalink to this heading">¶</a></h2>
+<p>To understand some of the files in the output, we can look at cell IDs
+and their data in the original input sheet</p>
+<p>For the dominant_umi_singlets, there are two cell IDs. One of them is
+TGTAAGCGTCTCGCGA. If we look at that entry in the input sheet and count
+the number of UMI associated with each barcode, we see that one barcode
+has 99 UMI counts while the second highest UMI count is 7. So, the cell
+most likely has only one barcode associated with it and hence, a
+singlet.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;cellID&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;TGTAAGCGTCTCGCGA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;cellID&#39;</span><span class="p">,</span> <span class="s1">&#39;barcode&#39;</span><span class="p">,</span> <span class="s1">&#39;sample&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cellID</th>
+      <th>barcode</th>
+      <th>sample</th>
+      <th>count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>TGTAAGCGTCTCGCGA</td>
+      <td>ATTGTTGTTGCAGATGCAGTTGATGCTGATGAAGTTGTACAAGGTC...</td>
+      <td>1</td>
+      <td>99</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>TGTAAGCGTCTCGCGA</td>
+      <td>ATTCGACTTGATCTTCTAGAACATGGTGAACTAGCAGGTGCTGATC...</td>
+      <td>1</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>TGTAAGCGTCTCGCGA</td>
+      <td>ATACTAGCTCAAGCAGTACTACTACTTCGTCTTCATGCAGAACAAC...</td>
+      <td>1</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>TGTAAGCGTCTCGCGA</td>
+      <td>ATAGATGCACTTGGTGGTCGAGTTCTAGTTGTAGCTGATCGTCCAG...</td>
+      <td>1</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>TGTAAGCGTCTCGCGA</td>
+      <td>ATTCGACCAGAACCACATGCAGTTCAACGTGTTCGAGGTGTAGATG...</td>
+      <td>1</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <td>TGTAAGCGTCTCGCGA</td>
+      <td>ATAGTAGTAGCTGTTGGTGTTGAAGTACTTCCTCTTGCTCCTCGTG...</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>83</th>
+      <td>TGTAAGCGTCTCGCGA</td>
+      <td>ATAGTAGATGAACGTCCTCTACATGTTCTTCGTCAAGTACCAGCAC...</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>TGTAAGCGTCTCGCGA</td>
+      <td>ATAGTACATGGTGGACCTGGACTTCGAGATGGAGCTCTTGTTCCTG...</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>85</th>
+      <td>TGTAAGCGTCTCGCGA</td>
+      <td>ATAGGAGTAGTTGGTGATGGTCTACCAGAAGGTGAAGGTGGAGAAG...</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>86</th>
+      <td>TGTAAGCGTCTCGCGA</td>
+      <td>GGTGCTCAACTTCTTGTTGTACTTCTAGTTGATGTTGGACGTCATC...</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>87 rows × 4 columns</p>
+</div><p>Next, we can look at multi-barcode singlets. There are two cell IDs:
+AGGCTGCTCTTTCCGG and GAGGGATGTAACATCC. If we look at the barcodes with
+greater than 2 UMI counts, we see that they have the same combination.
+The only way this can occur is if a cell receives multiple barcode
+initially and then divides.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;cellID&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;AGGCTGCTCTTTCCGG&#39;</span><span class="p">]</span>
+ <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;cellID&#39;</span><span class="p">,</span> <span class="s1">&#39;barcode&#39;</span><span class="p">,</span> <span class="s1">&#39;sample&#39;</span><span class="p">])</span>
+ <span class="o">.</span><span class="n">size</span><span class="p">()</span>
+ <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">)</span>
+ <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+ <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;count &gt;= 2&#39;</span><span class="p">)</span>
+ <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cellID</th>
+      <th>barcode</th>
+      <th>sample</th>
+      <th>count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>AGGCTGCTCTTTCCGG</td>
+      <td>ATAGGAGTAGTTGGTGATGGTCTACCAGAAGGTGAAGGTGGAGAAG...</td>
+      <td>1</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AGGCTGCTCTTTCCGG</td>
+      <td>ATTGAACGTGGAGTTGAACTTGTACTACGAGTACGTCTAGAACATG...</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></section>
+<section id="scrnaseq-data">
+<h2>scRNAseq data<a class="headerlink" href="#scrnaseq-data" title="Permalink to this heading">¶</a></h2>
+<p>Further single-cell RNAseq analysis with both scRNAseq data and singlet
+information from singletCode output</p>
+<p>Install and import scanpy for further single-cell RNAseq analysis</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>scanpy<span class="o">[</span>leiden<span class="o">]</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Import scanpy</span>
+<span class="kn">import</span> <span class="nn">scanpy</span> <span class="k">as</span> <span class="nn">sc</span>
+</pre></div>
+</div>
+<p>Reading the scRNAseq input data in h5ad format</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Reading the scRNAseq data in h5ad format</span>
+<span class="n">adata</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">read_h5ad</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">/inputFiles/JiangEtAlSubset_scRNAseqData.h5ad&quot;</span><span class="p">)</span>
+<span class="n">adata</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>AnnData object with n_obs × n_vars = 39 × 36601
+    var: &#39;gene_ids&#39;, &#39;feature_types&#39;
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Making copies of singletCode input/output to use them along with
+scRNAseq data. The -1 is added to cell IDs to match the cell IDs seen
+in 10x format data.</div>
+<div class="line"><strong>NOTE</strong>: It may not be needed for your actual data.</div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">singleCellDf</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">singleCellDf</span><span class="p">[</span><span class="s1">&#39;cellID&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">singleCellDf</span><span class="p">[</span><span class="s1">&#39;cellID&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;-1&quot;</span>
+<span class="n">singleCellDf</span> <span class="o">=</span> <span class="n">singleCellDf</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span> <span class="o">=</span> <span class="s1">&#39;cellID&#39;</span><span class="p">)</span>
+<span class="n">cellLabelListSingleCell</span> <span class="o">=</span> <span class="n">cellLabelList</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">cellLabelListSingleCell</span><span class="p">[</span><span class="s1">&#39;cellID&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cellLabelListSingleCell</span><span class="p">[</span><span class="s1">&#39;cellID&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;-1&quot;</span>
+<span class="n">cellLabelListSingleCell</span> <span class="o">=</span> <span class="n">cellLabelListSingleCell</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">&#39;cellID&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="calculating-total-counts-and-genes-identified-per-cell">
+<h3>Calculating total counts and genes identified per cell.<a class="headerlink" href="#calculating-total-counts-and-genes-identified-per-cell" title="Permalink to this heading">¶</a></h3>
+<p><strong>NOTE</strong>: In this vignette we are not doing any actual QC - but in
+actual analysis, it would need to be done.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">calculate_qc_metrics</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="calculating-pca-and-plotting-variance-ratio-vs-ranking">
+<h3>Calculating PCA and plotting variance ratio vs ranking<a class="headerlink" href="#calculating-pca-and-plotting-variance-ratio-vs-ranking" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">pca</span><span class="p">(</span><span class="n">adata</span><span class="p">)</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">pca_variance_ratio</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">n_pcs</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="../_images/singletCodePackageVignette_28_0.png" src="../_images/singletCodePackageVignette_28_0.png" />
+<p>Identifying cells that were thresholded by singletCode as low UMI by
+identifying cells that were in the original list provided to singletCode
+but not labeled as either singlet or undetermined. Then creating a list
+of annotations of singletStatus(singlet, multiplet, low UMI) for all
+cells</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">umiCutoff</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">singleCellDf</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="o">~</span><span class="n">singleCellDf</span><span class="p">[</span><span class="s1">&#39;cellID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">cellLabelListSingleCell</span><span class="p">[</span><span class="s1">&#39;cellID&#39;</span><span class="p">]),</span> <span class="s1">&#39;cellID&#39;</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;cellID&#39;</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="n">umiCutoff</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Low UMI&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cellIDLabels</span> <span class="o">=</span> <span class="n">cellLabelListSingleCell</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;barcode&#39;</span><span class="p">,</span> <span class="s1">&#39;sample&#39;</span><span class="p">,</span> <span class="s1">&#39;nUMI&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Creating a list of cell IDs with annotation of whether singlet, multiplet or low UMI.</span>
+<span class="n">labelID</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">umiCutoff</span><span class="p">,</span> <span class="n">cellIDLabels</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">labelID</span> <span class="o">=</span> <span class="n">labelID</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">labelID</span><span class="p">[</span><span class="s1">&#39;cellID&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;cellID&#39;</span><span class="p">])</span>
+<span class="c1">#Adding the labels to cells in the adata to visualise it</span>
+<span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s2">&quot;singletStatus&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">labelID</span>
+</pre></div>
+</div>
+</section>
+<section id="visualising-the-cells-in-pca-space">
+<h3>Visualising the cells in PCA space<a class="headerlink" href="#visualising-the-cells-in-pca-space" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">pca</span><span class="p">(</span>
+    <span class="n">adata</span><span class="p">,</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;n_genes_by_counts&#39;</span><span class="p">,</span> <span class="s1">&#39;total_counts&#39;</span><span class="p">,</span> <span class="s1">&#39;singletStatus&#39;</span><span class="p">],</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="mi">250</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<img alt="../_images/singletCodePackageVignette_34_0.png" src="../_images/singletCodePackageVignette_34_0.png" />
+</section>
+<section id="calculating-neigbours-and-umap-for-further-visualisation">
+<h3>Calculating neigbours and UMAP for further visualisation<a class="headerlink" href="#calculating-neigbours-and-umap-for-further-visualisation" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="n">adata</span><span class="p">)</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">umap</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">101010</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">umap</span><span class="p">(</span>
+    <span class="n">adata</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;singletStatus&#39;</span><span class="p">],</span>
+    <span class="c1"># Setting a smaller point size to get prevent overlap</span>
+    <span class="n">size</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<img alt="../_images/singletCodePackageVignette_37_0.png" src="../_images/singletCodePackageVignette_37_0.png" />
+</section>
+<section id="saving-the-anndata">
+<h3>Saving the AnnData<a class="headerlink" href="#saving-the-anndata" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adata</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">outputPath</span><span class="si">}</span><span class="s2">/JiangEtAlSubset.h5ad&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../watermelonDatasetVignette/" class="btn btn-neutral float-left" title="Vignette to use singletCode Command Line tool to analyse single-cell data with watermelon barcodes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../Contact/" class="btn btn-neutral float-right" title="questions? contact us!" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Goyal Lab.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

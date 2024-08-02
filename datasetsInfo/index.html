@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dataset information &mdash; singletCode 1.2 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/sphinx_rtd_size.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/colour.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script type="text/javascript">document.addEventListener('DOMContentLoaded', function() {document.querySelectorAll('a.reference.external').forEach(function(a) {a.setAttribute('target', '_blank'); a.setAttribute('rel', 'noopener noreferrer');});});</script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="singletCode PyPI package" href="../packageDocumentation/" />
+    <link rel="prev" title="benchmarking doublet detection methods" href="../doubletDetectionMethods/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            singletCode
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../doubletInformation/">doublets in sequencing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../singletCode/">what is singletCode?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../classifier/">classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usageInformation/">implementing singletCode on your data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doubletDetectionMethods/">benchmarking doublet detection methods</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">dataset information</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#barcoding-technologies-assessed">barcoding technologies assessed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dataset-details">dataset details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cell-types">cell types</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../packageDocumentation/">singletCode PyPI package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../infoCLI/">command line interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../watermelonDatasetVignette/">Vignette to use singletCode Command Line tool to analyse single-cell data with watermelon barcodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../singletCodePackageVignette/">Vignette to use singletCode package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Contact/">questions? contact us!</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.cell.com/cell-genomics/fulltext/S2666-979X(24)00176-9">link to paper</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.goyallab.org/">Goyal Lab website</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../repositories/">repositories</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">singletCode</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">dataset information</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/datasetsInfo.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="dataset-information">
+<span id="datasetinfo"></span><h1>dataset information<a class="headerlink" href="#dataset-information" title="Permalink to this heading">¶</a></h1>
+<section id="barcoding-technologies-assessed">
+<h2>barcoding technologies assessed<a class="headerlink" href="#barcoding-technologies-assessed" title="Permalink to this heading">¶</a></h2>
+<p>7 different barcoding technologies
+We incorporated datasets using FateMap, ClonMapper, SPLINTR, LARRY, CellTag-multi, Watermelon, and TREX barcodes. Each have their own recovery and analysis specifications that we outline in Box 1 of our paper.</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/Box1.png"><img alt="Datasets from 10 different publications spanning dozens of cell types." src="../_images/Box1.png" style="width: 573.5px; height: 436.0px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Schematic of the structure of different lineage-tracing barcodes, their length, diversity, and fluorescent color. Each barcode contains an expressed fluorescent protein, a unique sequence, known as the barcode, and a polyA tail for capture. The lengths of barcodes in each method are shown as scale bars, and library diversities are shown as circles, sized proportional to their diversity and colored according to fluorescent proteins used.</em></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="dataset-details">
+<h2>dataset details<a class="headerlink" href="#dataset-details" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default" id="id2">
+<caption><span class="caption-text">Specifications for barcoded and non-barcoded datasets</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset Name</p></th>
+<th class="head"><p>Alias ID</p></th>
+<th class="head"><p>Sample type</p></th>
+<th class="head"><p>Organism</p></th>
+<th class="head"><p>Tissue</p></th>
+<th class="head"><p>Cell line</p></th>
+<th class="head"><p>Genotype</p></th>
+<th class="head"><p>Treatment</p></th>
+<th class="head"><p>Total samples</p></th>
+<th class="head"><p>Publication</p></th>
+<th class="head"></th>
+<th class="head"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td></td>
+<td><p>barcoded scRNA-seq datasets</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Goyal et al. 1</p></td>
+<td><p>FM01</p></td>
+<td><p>Melanoma patient resistant cell line</p></td>
+<td><p>Homo sapiens</p></td>
+<td><p>Skin-derived</p></td>
+<td><p>WM989 A6-G3</p></td>
+<td><p>BRAF – V600E</p></td>
+<td><p>Targeted therapy</p></td>
+<td><p>4</p></td>
+<td><p>Goyal et al., Nature, 2023 (ref. 28)</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Goyal et al. 2</p></td>
+<td><p>FM02</p></td>
+<td><p>Melanoma patient resistant cell line</p></td>
+<td><p>Homo sapiens</p></td>
+<td><p>Skin-derived</p></td>
+<td><p>WM989 A6-G3</p></td>
+<td><p>BRAF – V600E</p></td>
+<td><p>Targeted therapy</p></td>
+<td><p>4</p></td>
+<td><p>Goyal et al., Nature, 2023 (ref. 28)</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Goyal et al. 3</p></td>
+<td><p>FM03</p></td>
+<td><p>Melanoma patient resistant cell line</p></td>
+<td><p>Homo sapiens</p></td>
+<td><p>Skin-derived</p></td>
+<td><p>WM989 A6-G3</p></td>
+<td><p>BRAF – V600E</p></td>
+<td><p>Targeted therapy</p></td>
+<td><p>2</p></td>
+<td><p>Goyal et al., Nature, 2023 (ref. 28)</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Goyal et al. 4</p></td>
+<td><p>FM04</p></td>
+<td><p>Breast cancer patient resistant cell line</p></td>
+<td><p>Homo sapiens</p></td>
+<td><p>Breast; mammary gland</p></td>
+<td><p>MDA-MB-231-D4</p></td>
+<td><p>BRAF – G464V, KRAS – G13D, TERT – c.1-124C&gt;T, TP53 – R280K</p></td>
+<td><p>Chemotherapy, cytotoxic</p></td>
+<td><p>2</p></td>
+<td><p>Goyal et al., Nature, 2023 (ref. 28)</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Goyal et al. 5</p></td>
+<td><p>FM05</p></td>
+<td><p>Melanoma patient resistant cell line</p></td>
+<td><p>Homo sapiens</p></td>
+<td><p>Skin-derived</p></td>
+<td><p>WM989 A6-G3</p></td>
+<td><p>BRAF – V600E</p></td>
+<td><p>Targeted therapy</p></td>
+<td><p>2</p></td>
+<td><p>Goyal et al., Nature, 2023 (ref. 28)</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Goyal et al. 6</p></td>
+<td><p>FM06</p></td>
+<td><p>Melanoma patient untreated cell line</p></td>
+<td><p>Homo sapiens</p></td>
+<td><p>Skin-derived</p></td>
+<td><p>WM989 A6-G3</p></td>
+<td><p>BRAF – V600E</p></td>
+<td><p>No treatment</p></td>
+<td><p>2</p></td>
+<td><p>Goyal et al., Nature, 2023 (ref. 28)</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Goyal et al. 8</p></td>
+<td><p>FM08</p></td>
+<td><p>Primary melanocytes</p></td>
+<td><p>Homo sapiens</p></td>
+<td><p>Skin-derived</p></td>
+<td><p>FOM230-1</p></td>
+<td><p>WT</p></td>
+<td><p>No treatment</p></td>
+<td><p>2</p></td>
+<td><p>Goyal et al., Nature, 2023 (ref. 28)</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Jiang et al.</p></td>
+<td><p>non_cancer</p></td>
+<td><p>HIPS differentiation</p></td>
+<td><p>Homo sapiens</p></td>
+<td><p>PBMCs</p></td>
+<td><p>PENN123i-SV20</p></td>
+<td><p>WT</p></td>
+<td><p>Cardiac differentiation signal</p></td>
+<td><p>2</p></td>
+<td><p>Jiang et al., Genome Biol, 2022 (ref. 31)</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Jain et al.</p></td>
+<td><p>Biorxiv</p></td>
+<td><p>Stem cell reprogramming</p></td>
+<td><p>Homo sapiens</p></td>
+<td><p>Fibroblasts</p></td>
+<td><p>hiF-T</p></td>
+<td><p>WT</p></td>
+<td><p>OKSM</p></td>
+<td><p>6</p></td>
+<td><p>Jain et al., Cell Systems, 2024 (ref. 34)</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>TREX</p></td>
+<td><p>TREX</p></td>
+<td><p>neuroepithelial progenitor cells differentiation</p></td>
+<td><p>Mus musculus</p></td>
+<td><p>Neural</p></td>
+<td><p>CD-1</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>No treatment</p></td>
+<td><p>4</p></td>
+<td><p>Ratz et al., Nature neuroscience, 2022 (ref. 37)</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>LARRY</p></td>
+<td><p>LARRY, LK</p></td>
+<td><p>pan-myeloid differentiation</p></td>
+<td><p>Mus musculus</p></td>
+<td><p>Blood</p></td>
+<td><p>Lin-Kit+</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>cytokines and growth factors</p></td>
+<td><p>18</p></td>
+<td><p>Weinreb et al., Science, 2020 (ref. 35)</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>LARRY</p></td>
+<td><p>LARRY, LSK</p></td>
+<td><p>pan-myeloid differentiation</p></td>
+<td><p>Mus musculus</p></td>
+<td><p>Blood</p></td>
+<td><p>Lin-Kit+Sca-1+</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>cytokines and growth factors</p></td>
+<td><p>15</p></td>
+<td><p>Weinreb et al., Science, 2020 (ref. 35)</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>SPLINTR</p></td>
+<td><p>SPLINTR_chemo</p></td>
+<td><p>Acute myeloid leukaemia</p></td>
+<td><p>Mus musculus</p></td>
+<td><p>Bone marrow</p></td>
+<td><p>C57BL/6</p></td>
+<td><p>MLL-AF9 + KrasG12D</p></td>
+<td><p>chemotherapy</p></td>
+<td><p>10</p></td>
+<td><p>Fennell et al., Nature, 2022 (ref. 26)</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>SPLINTR</p></td>
+<td><p>SPLINTR_clone</p></td>
+<td><p>Acute myeloid leukaemia</p></td>
+<td><p>Mus musculus</p></td>
+<td><p>Bone marrow</p></td>
+<td><p>C57BL/6</p></td>
+<td><p>MLL-AF9, MLL-AF9 + KrasG12D, MLL-AF9 + Flt3ITD</p></td>
+<td><p>No treatment</p></td>
+<td><p>4</p></td>
+<td><p>Fennell et al., Nature, 2022 (ref. 26)</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>SPLINTR</p></td>
+<td><p>SPLINTR_chemoretrans</p></td>
+<td><p>Acute myeloid leukaemia</p></td>
+<td><p>Mus musculus</p></td>
+<td><p>Bone marrow and spleen</p></td>
+<td><p>C57BL/6</p></td>
+<td><p>MLL-AF9 + KrasG12D</p></td>
+<td><p>No treatment</p></td>
+<td><p>1</p></td>
+<td><p>Fennell et al., Nature, 2022 (ref. 26)</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Watermelon</p></td>
+<td><p>Watermelon</p></td>
+<td><p>Breast cancer patient resistant cell line</p></td>
+<td><p>Homo sapiens</p></td>
+<td><p>Breast; mammary gland</p></td>
+<td><p>T-47D</p></td>
+<td><p>PIK3CA – H1047R; 
+Tp53 – L194F</p></td>
+<td><p>Targeted therapy</p></td>
+<td><p>6</p></td>
+<td><p>This paper</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>CellTag-multi</p></td>
+<td><p>CellTag-multi_d</p></td>
+<td><p>multilineage differentiation (hematopoiesis)</p></td>
+<td><p>Mus musculus</p></td>
+<td><p>bone marrow</p></td>
+<td><p>LSK</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>cytokines and growth factors</p></td>
+<td><p>3</p></td>
+<td><p>Jindal et al., Nature biotechnology, 2023 (ref. 36)</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>CellTag-multi</p></td>
+<td><p>CellTag-multi_B4</p></td>
+<td><p>iEP reprogramming</p></td>
+<td><p>Mus musculus</p></td>
+<td><p>embryo</p></td>
+<td><p>C57BL/6J</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>EGF</p></td>
+<td><p>1</p></td>
+<td><p>Jindal et al., Nature biotechnology, 2023 (ref. 36)</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>ClonMapper</p></td>
+<td><p>ClonMapper</p></td>
+<td><p>CLL resistant cell lines</p></td>
+<td><p>Homo sapiens</p></td>
+<td><p>blood</p></td>
+<td><p>HG3</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Chemotherapy</p></td>
+<td><p>4</p></td>
+<td><p>Gutierrez et al., Nature Cancer, 2021 (ref. 17)</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Smart-seq3</p></td>
+<td><p>Smart-seq3</p></td>
+<td><p>neuroepithelial progenitor cells differentiation</p></td>
+<td><p>Mus musculus</p></td>
+<td><p>Neural</p></td>
+<td><p>CD-1</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>No treatment</p></td>
+<td><p>2</p></td>
+<td><p>Mold et al., Cell systems, 2024 (ref. 38)</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>nonbarcoded sc-RNA seq datasets</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>non-barcoded</p></td>
+<td><p>hm-12k</p></td>
+<td><p>Synthetic dataset</p></td>
+<td><p>Homo sapiens, Mus musculus</p></td>
+<td><p>Human kidney, Murine fibroblasts</p></td>
+<td><p>HEK293T, NIH3T3</p></td>
+<td><p>WT</p></td>
+<td><p>No treatment</p></td>
+<td><p>1</p></td>
+<td><p>Zheng et al., Nat Commun, 2017 (ref. 44)</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>non-barcoded</p></td>
+<td><p>hm-6k</p></td>
+<td><p>Synthetic dataset</p></td>
+<td><p>Homo sapiens, Mus musculus</p></td>
+<td><p>Human kidney, Murine fibroblasts</p></td>
+<td><p>HEK293T, NIH3T3</p></td>
+<td><p>WT</p></td>
+<td><p>No treatment</p></td>
+<td><p>1</p></td>
+<td><p>Zheng et al., Nat Commun, 2017 (ref. 44)</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>non-barcoded</p></td>
+<td><p>HMEC-orig-MULTI</p></td>
+<td><p>HMECs</p></td>
+<td><p>Homo sapiens</p></td>
+<td><p>mammary gland</p></td>
+<td><p>HMEC</p></td>
+<td><p>WT</p></td>
+<td><p>No treatment</p></td>
+<td><p>1</p></td>
+<td><p>McGinnis et al., Cell Syst., 2019 (ref. 6)</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>non-barcoded</p></td>
+<td><p>HMEC-rep-MULTI</p></td>
+<td><p>HMECs</p></td>
+<td><p>Homo sapiens</p></td>
+<td><p>mammary gland</p></td>
+<td><p>HMEC</p></td>
+<td><p>WT</p></td>
+<td><p>No treatment</p></td>
+<td><p>1</p></td>
+<td><p>McGinnis et al., Cell Syst., 2019 (ref. 6)</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>non-barcoded</p></td>
+<td><p>HEK-HMEC-MULTI</p></td>
+<td><p>Synthetic dataset</p></td>
+<td><p>Homo sapiens</p></td>
+<td><p>Human kidney, mammary gland</p></td>
+<td><p>HEK293T, HMEC</p></td>
+<td><p>WT</p></td>
+<td><p>No treatment</p></td>
+<td><p>1</p></td>
+<td><p>McGinnis et al., Cell Syst., 2019 (ref. 6)</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>non-barcoded</p></td>
+<td><p>mkidney-ch</p></td>
+<td><p>Mouse kidney cells</p></td>
+<td><p>Mus musculus</p></td>
+<td><p>Mouse kidney</p></td>
+<td><p>C57BL/6J</p></td>
+<td><p>WT</p></td>
+<td><p>No treatment</p></td>
+<td><p>1</p></td>
+<td><p>Bernstein et al., Cell Syst., 2020 (ref. 3)</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>non-barcoded</p></td>
+<td><p>pbmc-2ctrl-dm</p></td>
+<td><p>Patient PBMCs</p></td>
+<td><p>Homo sapiens</p></td>
+<td><p>Systemic lupus erythematosus (SLE) PBMCs</p></td>
+<td><p>Patient- derived</p></td>
+<td><p>Patient- derived</p></td>
+<td><p>No treatment</p></td>
+<td><p>1</p></td>
+<td><p>Kang et al., Nat. Biotechnol., 2018 (ref. 45)</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>non-barcoded</p></td>
+<td><p>pbmc-2stim-dm</p></td>
+<td><p>Patient PBMCs</p></td>
+<td><p>Homo sapiens</p></td>
+<td><p>Systemic lupus erythematosus (SLE) PBMCs</p></td>
+<td><p>Patient- derived</p></td>
+<td><p>Patient- derived</p></td>
+<td><p>No treatment</p></td>
+<td><p>1</p></td>
+<td><p>Kang et al., Nat. Biotechnol., 2018 (ref. 45)</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>non-barcoded</p></td>
+<td><p>cline-ch</p></td>
+<td><p>Human HEK, K562, KG1, and THP1</p></td>
+<td><p>Homo sapiens</p></td>
+<td><p>blood</p></td>
+<td><p>human - derived</p></td>
+<td><p>human - derived</p></td>
+<td><p>No treatment</p></td>
+<td><p>1</p></td>
+<td><p>Stoeckius et al., Genome Biol., 2018 (ref. 13)</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>non-barcoded</p></td>
+<td><p>pbmc-ch</p></td>
+<td><p>Human PBMCs</p></td>
+<td><p>Homo sapiens</p></td>
+<td><p>blood</p></td>
+<td><p>human - derived</p></td>
+<td><p>human - derived</p></td>
+<td><p>No treatment</p></td>
+<td><p>1</p></td>
+<td><p>Stoeckius et al., Genome Biol., 2018 (ref. 13)</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>non-barcoded</p></td>
+<td><p>pdx-MULTI</p></td>
+<td><p>Synthetic dataset</p></td>
+<td><p>Homo sapiens, Mus musculus</p></td>
+<td><p>Human breast cancer, mouse immue</p></td>
+<td><p>PDX mouse model</p></td>
+<td><p>PDX mouse model</p></td>
+<td><p>No treatment</p></td>
+<td><p>1</p></td>
+<td><p>McGinnis et al., Cell Syst., 2019 (ref. 6)</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>non-barcoded</p></td>
+<td><p>nuc-MULTI</p></td>
+<td><p>Synthetic dataset</p></td>
+<td><p>Homo sapiens, Mus musculus</p></td>
+<td><p>nuclei</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>No treatment</p></td>
+<td><p>1</p></td>
+<td><p>McGinnis et al., Cell Syst., 2019 (ref. 6)</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Multiome datasets</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>ATAC</p></td>
+<td><p>Watermelon Multiome</p></td>
+<td><p>Breast cancer patient resistant cell line</p></td>
+<td><p>Homo sapiens</p></td>
+<td><p>Breast; mammary gland</p></td>
+<td><p>MCF7</p></td>
+<td><p>GATA3 – D336G; 
+PIK3CA – E545K</p></td>
+<td><p>Targeted therapy</p></td>
+<td><p>6</p></td>
+<td><p>This paper</p></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="cell-types">
+<h2>cell types<a class="headerlink" href="#cell-types" title="Permalink to this heading">¶</a></h2>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="../_images/Figure1D.png"><img alt="Stacked bar chart of cell types in all datasets. Each distinct color corresponds to one study, with the proportions of different cell types arranged from most to least prevalent (deepest to lightest) and separated by vertical lines. Adjacent to the bar chart, sketched tissues and cells provide a visualization of the cell types used in the particular study." src="../_images/Figure1D.png" style="width: 472.5px; height: 375.5px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Stacked bar chart of cell types in all datasets. Each distinct color corresponds to one study, with the proportions of different cell types arranged from most to least prevalent (deepest to lightest) and separated by vertical lines. Adjacent to the bar chart, sketched tissues and cells provide a visualization of the cell types used in the particular study.</em></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../doubletDetectionMethods/" class="btn btn-neutral float-left" title="benchmarking doublet detection methods" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../packageDocumentation/" class="btn btn-neutral float-right" title="singletCode PyPI package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Goyal Lab.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

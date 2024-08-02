@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doublets in RNA sequencing data &mdash; SingletCode 1.2 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/sphinx_rtd_size.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="How does Singlet Code detect singlets?" href="../working/" />
+    <link rel="prev" title="Singlet Code" href="../../mainIntro/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../" class="icon icon-home">
+            SingletCode
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../mainIntro/">Singlet Code</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Doublets in RNA sequencing data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working/">How does Singlet Code detect singlets?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarking/">Creating Benchmark datasets from Singlet Code results</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../classifier/">Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../doubletDetectionMethods/">Doublet detection methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../datasetsInfo/">Datasets used in Singlet Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references/">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.biorxiv.org/content/10.1101/2023.08.04.552078v2">Link to Paper</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.goyallab.org/">Lab Website</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/madelinemelzer/singletCode">Github repository</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">SingletCode</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../mainIntro/">Singlet Code</a></li>
+      <li class="breadcrumb-item active">Doublets in RNA sequencing data</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/mainSingletCode/doubletInfo.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="doublets-in-rna-sequencing-data">
+<h1>Doublets in RNA sequencing data<a class="headerlink" href="#doublets-in-rna-sequencing-data" title="Permalink to this heading">¶</a></h1>
+<div class="line-block">
+<div class="line"><strong>How scRNA-seq technologies work?</strong></div>
+<div class="line">scRNA-seq technologies rely on distributing individual cells from a suspension into individual reactions, each labeled with a unique “ID”, usually in the form of a reaction-specific sequence barcode.</div>
+<div class="line"><br /></div>
+<div class="line"><strong>Since each cell has an unique ID, why are there doublets?</strong></div>
+<div class="line">Despite numerous technological optimizations, multiple cells can occasionally be encapsulated in a single reaction, resulting in doublets or multiplets where two or more cells are assigned the same reaction ID. The percentage of doublets in a given experiment depends on several factors, including the features of the sample and throughput, and can be as high as 40-50% <span id="id1">[<a class="reference internal" href="../../references/#id3" title="Nicholas J. Bernstein, Nicole L. Fong, Irene Lam, Margaret A. Roy, David G. Hendrickson, and David R. Kelley. Solo: doublet identification in single-cell rna-seq via semi-supervised deep learning. Cell Systems, 11(1):95-101.e5, July 2020. doi:10.1016/j.cels.2020.05.010.">B1</a>]</span> <span id="id2">[<a class="reference internal" href="../../references/#id4" title="Nan Miles Xi and Jingyi Jessica Li. Benchmarking computational doublet-detection methods for single-cell rna sequencing data. Cell Systems, 12(2):176-194.e6, February 2021. doi:10.1016/j.cels.2020.11.008.">B3</a>]</span>. In turn, such artifacts affect the downstream analysis <span id="id3">[<a class="reference internal" href="../../references/#id5" title="Malte D. Luecken and Fabian J. Theis. Current best practices in single-cell rna-seq analysis: a tutorial. Molecular Systems Biology, 15(6):e8746, June 2019. doi:10.15252/msb.20188746.">B2</a>]</span>.</div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../mainIntro/" class="btn btn-neutral float-left" title="Singlet Code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../working/" class="btn btn-neutral float-right" title="How does Singlet Code detect singlets?" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Goyal Lab.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

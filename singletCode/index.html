@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>what is singletCode? &mdash; singletCode 1.2 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/sphinx_rtd_size.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/colour.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script type="text/javascript">document.addEventListener('DOMContentLoaded', function() {document.querySelectorAll('a.reference.external').forEach(function(a) {a.setAttribute('target', '_blank'); a.setAttribute('rel', 'noopener noreferrer');});});</script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="classifier" href="../classifier/" />
+    <link rel="prev" title="doublets in sequencing" href="../doubletInformation/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            singletCode
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../doubletInformation/">doublets in sequencing</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">what is singletCode?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#singlet-identification">Singlet identification</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../classifier/">classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usageInformation/">implementing singletCode on your data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doubletDetectionMethods/">benchmarking doublet detection methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datasetsInfo/">dataset information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../packageDocumentation/">singletCode PyPI package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../infoCLI/">command line interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../watermelonDatasetVignette/">Vignette to use singletCode Command Line tool to analyse single-cell data with watermelon barcodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../singletCodePackageVignette/">Vignette to use singletCode package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Contact/">questions? contact us!</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.cell.com/cell-genomics/fulltext/S2666-979X(24)00176-9">link to paper</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.goyallab.org/">Goyal Lab website</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../repositories/">repositories</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">singletCode</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">what is singletCode?</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/singletCode.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="what-is-singletcode">
+<h1>what is singletCode?<a class="headerlink" href="#what-is-singletcode" title="Permalink to this heading">¶</a></h1>
+<p>singletCode is a framework to extract true singlets from barcoded scRNA-seq data. Our pipeline identified barcoded singlets from 10 different publications and 6 original experimental scRNA-seq samples generated in this study, encompassing 7 different barcoding technologies, 94 scRNA-seq samples, 3 unique sequencing technologies, and a total of 564,579 cells. Of the 338,948 barcoded cells, we extracted 293,618 singlets.(read more about the barcoded datasets we used singletCode with <a class="reference internal" href="../datasetsInfo/#datasetinfo"><span class="std std-ref">here</span></a>).</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/Figure1B.png"><img alt="Stacked bar chart showing types of singlets in each dataset. Each color represents one type of barcode composition that constitutes a singlet. Single barcode means one cell ID has one associated lineage barcode. Dominant barcode means one barcode has the highest UMI counts in one cell. Multiple barcodes within or across samples are scenarios where the same barcode combinations are observed in the same sample or across twin samples. See our paper for details." src="../_images/Figure1B.png" style="width: 711.5px; height: 165.0px;" /></a>
+</figure>
+<section id="singlet-identification">
+<h2>Singlet identification<a class="headerlink" href="#singlet-identification" title="Permalink to this heading">¶</a></h2>
+<p>singletCode leverages the fact that the lineage barcodes are present within the cell before sequencing. As a result of multiplicity of infection, singletCode identifies cells which meet any of the following conditions as a true singlet:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>1 barcode/1 cell ID</p></li>
+<li><p>&gt;1 barcode per 1 cell ID, but 1 barcode has significantly more UMI counts than the other barcodes within the same cell</p></li>
+<li><p>M barcodes per 1 cell ID, but the same combination of M barcodes are found in other cells in the same sample</p></li>
+<li><p>M barcodes per 1 cell ID, but the same combination of M barcodes are found in other cells across samples within the same experimental design (common in barcoding studies)</p></li>
+</ol>
+</div></blockquote>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/Figure1F.png"><img alt="Stacked bar chart showing types of singlets in each dataset. Each color represents one type of barcode composition that constitutes a singlet. Single barcode means one cell ID has one associated lineage barcode. Dominant barcode means one barcode has the highest UMI counts in one cell. Multiple barcodes within or across samples are scenarios where the same barcode combinations are observed in the same sample or across twin samples. See our paper for details." src="../_images/Figure1F.png" style="width: 634.0px; height: 373.0px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Stacked bar chart showing types of singlets in each dataset. Each color represents one type of barcode composition that constitutes a singlet. Single barcode means one cell ID has one associated lineage barcode. Dominant barcode means one barcode has the highest UMI counts in one cell. Multiple barcodes within or across samples are scenarios where the same barcode combinations are observed in the same sample or across twin samples. See our paper for details.</em></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../doubletInformation/" class="btn btn-neutral float-left" title="doublets in sequencing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../classifier/" class="btn btn-neutral float-right" title="classifier" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Goyal Lab.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
